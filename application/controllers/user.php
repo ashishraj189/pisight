@@ -203,7 +203,7 @@ class User extends CI_Controller {
 						  'updated_at'=>$date,
 						  'verification_code'=>$randormcode
 				       );
-			     $code = $this->encrypt->encode($randormcode); 		   
+			     //$code = $this->encrypt->encode($randormcode); 		   
 				 $this->user_model->update_data("user", $arr, "user_id",$user_id);
 				 $this->load->view("user_view/verifyemail");
 			  }
@@ -220,7 +220,7 @@ class User extends CI_Controller {
 	    $val = array();
 	    if(isset($code) && !empty($code))
 		{
-		      echo $code = $this->encrypt->decode(10,$code);
+		      //$code = $this->encrypt->decode($code);
 		      $status = false;
 		      $query = $this->db->get_where('user', array('verification_code' => $code), 1);
 		      $sqlresult =  $query->result();
