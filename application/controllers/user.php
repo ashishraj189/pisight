@@ -196,13 +196,16 @@ class User extends CI_Controller {
 				 $date = date('Y-m-d h:i:s', time());
 				 $login_session = $this->session->userdata('logged_in');
 				 $user_id = $login_session['user_id']; 
+				 $randormcode = rand(1000,10000);
 				 $arr =  array(
-						'security_question_id' => $questionid,
-						'security_question_ans'  => $answer,
-						'updated_at'=>$date
+						  'security_question_id' => $questionid,
+						  'security_question_ans'  => $answer,
+						  'updated_at'=>$date,
+						  'verification_code'=>$randormcode
 				       );
-				 $update = $this->user_model->update_data("user", $arr, "user_id",$user_id);
-				 $this->load->view("user_view/thanksmessage");
+			     $code = $this->encrypt->encode($randormcode); 		   
+				 $this->user_model->update_data("user", $arr, "user_id",$user_id);
+				 $this->load->view("user_view/verifyemail");
 			  }
 			  else
 			  {
@@ -210,8 +213,44 @@ class User extends CI_Controller {
 			      $this->session->set_flashdata('message', 'Not selected');
 			      $this->load->view("user_view/securityquestions_view",$val);
 			  }
-		  }
-		  
+		  } 
 	 }
-	 
+	 public function verifyemail($code)
+	 { 
+	    $val = array();
+	    if(isset($code) && !empty($code))
+		{
+		      echo $code = $this->encrypt->decode(10,$code);
+		      $status = false;
+		      $query = $this->db->get_where('user', array('verification_code' => $code), 1);
+		      $sqlresult =  $query->result();
+			  if ($query->num_rows()== 1)
+			  {
+					   $status = true;
+					   $user_id = $sqlresult[0]->user_id;  
+			  }
+			  else
+			  {        
+					   $status = false;
+			  } 
+		     if( $status != false)
+			 {
+			      $date = date('Y-m-d h:i:s', time());
+		          $arr =  array
+		           (
+						'is_verified' => 1,
+						'updated_at'=>$date,
+						'status'=>1
+				   );
+				   $this->user_model->update_data("user", $arr, "user_id",$user_id);
+				   $val["msg"] = "You have successfully registerd";
+				    $this->load->view("user_view/verifyemail",$val);
+			 }
+			 else
+			 {
+			      $val["msg"] = "Not valid codes";
+				  $this->load->view("user_view/verifyemail",$val);
+			 }
+		}		 
+	 }
 }
