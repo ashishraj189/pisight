@@ -10,15 +10,17 @@ class User extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('user_view/login_view');	
+                $this->load->view('common/header');
+		$this->load->view('user/login_view');
+                $this->load->view('common/footer');
 	}
 	public function signup()
 	{
-	    $this->load->view('user_view/signup_view');
+	    $this->load->view('user/signup_view');
 	}
 	public function forgatepassword()
 	{
-	    $this->load->view('user_view/forgatepwassord_view');
+	    $this->load->view('user/forgatepwassord_view');
 	}
 	
 	public function signupVals()
@@ -53,7 +55,7 @@ class User extends CI_Controller {
 				    if($data) {
 					    $userdata = array('user_id'=>$data);
 					    $this->user_model->create_user_session($userdata);
-					    $this->load->view("user_view/securityquestions_view",$val);
+					    $this->load->view("user/securityquestions_view",$val);
 					}	
 		   }
 		   else 
@@ -100,7 +102,7 @@ class User extends CI_Controller {
 						  $this->user_model->create_user_session($userdata);
 					      $data = $this->user_model->insertData($inputData, 'login'); 
 						  if($data) {
-						     $this->load->view("user_view/onetimecode_view"); 
+						     $this->load->view("user/onetimecode_view"); 
 						  }
 					}
 					else
@@ -123,7 +125,7 @@ class User extends CI_Controller {
 	       $this->form_validation->set_rules('user_email', 'Email', 'trim|required|valid_email|callback_email_check');
 		    if ($this->form_validation->run() == FALSE)
             {
-                  $this->load->view('user_view/forgatepwassord_view');
+                  $this->load->view('user/forgatepwassord_view');
             }
             else
             {         $email = $this->input->post("forgate");
@@ -160,12 +162,12 @@ class User extends CI_Controller {
 		       $this->form_validation->set_rules('user_validcode', 'Valid Code', 'numeric|trim|required|callback_chkonetimecode');
 			   if ($this->form_validation->run() == FALSE)
                {
-                  $this->load->view("user_view/onetimecode_view");
+                  $this->load->view("user/onetimecode_view");
                }
 			   else
 			   {
 			      $val["secqus"] = $this->user_model->get_Question();
-			      $this->load->view("user_view/securityquestions_view",$val);
+			      $this->load->view("user/securityquestions_view",$val);
 			   }
 		  }
 	 }
@@ -202,13 +204,13 @@ class User extends CI_Controller {
 						'updated_at'=>$date
 				       );
 				 $update = $this->user_model->update_data("user", $arr, "user_id",$user_id);
-				 $this->load->view("user_view/thanksmessage");
+				 $this->load->view("user/thanksmessage");
 			  }
 			  else
 			  {
 			      $val["secqus"] = $this->user_model->get_Question();
 			      $this->session->set_flashdata('message', 'Not selected');
-			      $this->load->view("user_view/securityquestions_view",$val);
+			      $this->load->view("user/securityquestions_view",$val);
 			  }
 		  }
 		  
