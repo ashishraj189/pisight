@@ -57,32 +57,32 @@
                         <div class="top-menu">  
                             <ul class="nav navbar-nav navbar-right" style="margin-top:-57px; color:#fff; font-weight: 400;">
                                 <li>
-                                    <a href="login.html" class="log-out waves-effect waves-button waves-classic">
+                                    <a href="#" class="log-out waves-effect waves-button waves-classic">
                                         <span>HOW IT WORKS</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="login.html" class="log-out waves-effect waves-button waves-classic">
+                                    <a href="#" class="log-out waves-effect waves-button waves-classic">
                                         <span>FAQ</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="login.html" class="log-out waves-effect waves-button waves-classic">
+                                    <a href="#" class="log-out waves-effect waves-button waves-classic">
                                         <span>MOBILE APP</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="login.html" class="log-out waves-effect waves-button waves-classic">
+                                    <a href="#" class="log-out waves-effect waves-button waves-classic">
                                         <span>BLOG</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="login.html" class="log-out waves-effect waves-button waves-classic">
+                                    <a href="<?php echo site_url('user/signup');?>" class="log-out waves-effect waves-button waves-classic">
                                         <span>SIGNUP</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="login.html" class="log-out waves-effect waves-button waves-classic">
+                                    <a href="<?php echo site_url('user');?>" class="log-out waves-effect waves-button waves-classic">
                                         <span>LOGIN</span>
                                     </a>
                                 </li>

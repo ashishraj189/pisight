@@ -14,7 +14,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
                 <div class="panel-body">
                     <?php echo form_open('user/signupVals') ?>
-
                     <?php if ($this->session->flashdata('message')) : ?>
                         <p><?php echo $this->session->flashdata('message') ?></p>
                     <?php endif; ?>

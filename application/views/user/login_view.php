@@ -54,7 +54,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <input type="submit" class="btn btn-info pull-right" value='Submit' name="login" style="padding-right: 30px; padding-left: 30px;">  
                     <div class="form-group">                                            
                         <a href="<?php echo site_url('user/signup');?>">Register a new account</a><br>
-                        <a href="#">I forgot my password</a> 
+                        <a href="<?php echo site_url('user/forgot_password');?>">I forgot my password</a> 
                     </div>                                         
 
                     <?php echo form_close(); ?>

@@ -21,8 +21,10 @@ class User extends CI_Controller {
         $this->load->view('common/footer');
     }
 
-    public function forgatepassword() {
-        $this->load->view('user/forgatepwassord_view');
+    public function forgot_password() {
+        $this->load->view('common/header');
+        $this->load->view('user/forgot_password_view');
+        $this->load->view('common/footer');
     }
 
     public function signupVals() {
@@ -120,16 +122,16 @@ class User extends CI_Controller {
         }
     }
 
-    public function forgatepassword_vals() {
-        if ($this->input->post("forgate")) {
+    public function forgot_password_vals() {
+        if ($this->input->post("forgot")) {
             $this->form_validation->set_rules('user_email', 'Email', 'trim|required|valid_email|callback_email_check');
             if ($this->form_validation->run() == FALSE) {
-                $this->load->view('user/forgatepwassord_view');
+                $this->load->view('user/forgot_password_view');
             } else {
-                $email = $this->input->post("forgate");
+                $email = $this->input->post("forgot");
                 $this->email->from('gupta.mayank.765@gmail.com', "Admin Team");
                 $this->email->to($email);
-                $this->email->subject("Forgate Mail");
+                $this->email->subject("Forgot Email");
                 $this->email->message("Mail sent test message...");
                 $data['message'] = "Sorry Unable to send email...";
                 if ($this->email->send()) {
