@@ -76,20 +76,71 @@
                                         <span>BLOG</span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="<?php echo site_url('user/signup');?>" class="log-out waves-effect waves-button waves-classic">
-                                        <span>SIGNUP</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="<?php echo site_url('user');?>" class="log-out waves-effect waves-button waves-classic">
-                                        <span>LOGIN</span>
-                                    </a>
-                                </li>
+                                <?php
+                                $logged_in = $this->session->userdata('logged_in');
+                                if (empty($logged_in)) {
+                                    ?>
+                                    <li>
+                                        <a href="<?php echo site_url('user/signup'); ?>" class="log-out waves-effect waves-button waves-classic">
+                                            <span>SIGNUP</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="<?php echo site_url('user'); ?>" class="log-out waves-effect waves-button waves-classic">
+                                            <span>LOGIN</span>
+                                        </a>
+                                    </li>
+                                <?php } ?>
                             </ul><!-- Nav --> 
                         </div><!-- Top Menu -->
                     </div>
                 </div>
             </div><!-- Navbar -->
 
-            <div class="page-inner"> 
+            <div class="page-inner">    
+                <?php
+                $logged_in = $this->session->userdata('logged_in');
+                if (!empty($logged_in)) {
+                    ?>
+                    <div class="page-title">
+                        <h3 style="color:#fff;">.</h3>
+                        <div class="page-breadcrumb">
+                            <ol class="breadcrumb pull-right">                            
+                                <li>
+                                    <a href="#">
+                                        <img src="<?php echo base_url(); ?>assets/images/refresh.png" alt=""/>
+                                        <br>
+                                        REFRESH
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="<?php echo base_url(); ?>assets/images/split.png" alt=""/>
+                                        <br>
+                                        SPLIT CASH</a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="<?php echo base_url(); ?>assets/images/alert.png" alt=""/>
+                                        <br>
+                                        ALERTS
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <img src="<?php echo base_url(); ?>assets/images/upcoming.png" alt=""/>
+                                        <br>
+                                        UPCOMING BILLS
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo site_url('user/logout'); ?>">
+                                        <img src="<?php echo base_url(); ?>assets/images/logout.png" alt=""/>
+                                        <br>
+                                        LOGOUT
+                                    </a>
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                <?php } ?>

@@ -12,7 +12,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <h1>Thanks For Registration</h1>
                 </div>
                 <div class="panel-body">
-
                     PLease click below link for login <a href="<?php echo base_url() . "user"; ?>">Click Here</a>
                 </div>
             </div>

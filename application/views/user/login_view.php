@@ -37,7 +37,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <?php
                         $password_property = array(
                             'type' => 'password',
-                            'name' => 'user_email',
+                            'name' => 'user_pass',
                             'id' => 'exampleInputPassword1',
                             // 'value' => set_value('user_pass'),
                             'class' => 'form-control',

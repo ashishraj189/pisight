@@ -46,6 +46,7 @@ class User_Model extends CI_Model {
         if ($start != "" || $limit != "") {
             $sql .= "LIMIT " . $start . ", " . $limit;
         }
+
         $query = $this->db->query($sql);
         $result = $query->result_array();
         return $result;
@@ -84,12 +85,19 @@ class User_Model extends CI_Model {
 
     /* Funcition used for saving values into session */
 
-    function create_user_session($session_data = array()) {
+    function create_login_session($session_data = array()) {
         $CI = &get_instance();
         $CI->session->set_userdata('logged_in', $session_data);
     }
 
     /* Function for getting security questions */
+
+    function create_user_session($session_data = array()) {
+        $CI = &get_instance();
+        $CI->session->set_userdata('user_in', $session_data);
+    }
+
+    /* Function create user_session when registered user */
 
     function get_Question() {
         $this->db->from("security_question");
@@ -103,6 +111,52 @@ class User_Model extends CI_Model {
         } else {
             return NULL;
         }
+    }
+
+    /* Get confirm security questions insert into database */
+
+    function userInsert_securityQu($loginId) {
+        //die($loginId);
+        $this->db->select("security_question_id");
+        $this->db->from("user");
+        $this->db->where('user_id', $loginId);
+        $result = $this->db->get();
+        $return = array();
+        if ($result->num_rows() > 0) {
+            $questionID = $result->row()->security_question_id;
+            if ($questionID) {
+                $this->db->select("security_question, question_id");
+                $this->db->from("security_question");
+                $this->db->where('question_id', $questionID);
+                $this->db->where('status', 1);
+                $question = $this->db->get();
+                $returnques = array();
+                if ($question->num_rows() > 0) {
+                    $returnques['security_question'] = $question->row()->security_question;
+                    $returnques['question_id'] = $question->row()->question_id;
+                    return $returnques;
+                } else {
+                    return NULL;
+                }
+            }
+            return $returnques;
+        } else {
+            return NULL;
+        }
+    }
+    
+    function confirm_security_ques($user_id, $question_id, $answer){
+        $this->db->select("user_id");
+                $this->db->from("user");
+                $this->db->where('user_id', $user_id);
+                $this->db->where('security_question_id', $question_id);
+                $this->db->where('security_question_ans', $answer);
+                $result = $this->db->get();
+        $return = array();
+        if ($result->num_rows() > 0) {
+            return true;
+        } else 
+            return FALSE;
     }
 
 }

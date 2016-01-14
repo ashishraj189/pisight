@@ -10,11 +10,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="panel panel-white" style="border:none !important;box-shadow: none; ">
                 <img class="img-responsive blue-logo" src="<?php echo base_url(); ?>assets/images/blue-logo.png">
                 <div class="panel-heading clearfix">                                    
-                    <h4 style="text-align:left;">Please answer your security questions</h4>                                    
+                    <h4 style="text-align:left;">Please confirm security questions</h4>                                    
                 </div>
 
                 <div class="panel-body">
-                    <?php echo form_open('user/signupVals/') ?>                      
+                    <?php echo form_open('user/verify_security_question/') ?>                      
                     <?php if ($this->session->flashdata('message')) : ?>
                         <p><?php echo $this->session->flashdata('message') ?></p>
                     <?php endif; ?>                                        

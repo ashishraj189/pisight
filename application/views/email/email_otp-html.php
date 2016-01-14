@@ -30,8 +30,8 @@
 			Thank you for registering your email with us!
 		</div>
 		<br/>
-		To complete the registration process, please click here to confirm your email address:</br><br/>
-		<a href="<?php echo $activation_link; ?>"><?php echo $activation_link; ?></a></br><br/></br>
+		One Time Password: <?php echo $otp_code?></br><br/>
+		<br/></br>
 		<br> <br/>
 		Thanks and best regards,</br>
 		<br/><br/>

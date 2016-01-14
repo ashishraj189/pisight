@@ -8,17 +8,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="col-md-4">
             <div class="panel panel-white" style="border:none !important;box-shadow: none; ">
                 <img class="img-responsive blue-logo" src="<?php echo base_url(); ?>assets/images/blue-logo.png">
-                <div class="panel-heading clearfix">                                    
+                <div class="panel-heading clearfix" style="height: 70px;">                                    
                     <?php
                     if (isset($msg) && !empty($msg)) {
-                        echo "<h1>" . $msg . "</h1>";
+                        echo '<h4 style="text-align:left;">"' . $msg . '"</h4>';
                     } else {
-                        echo '<h1>Thanks For Registration. Please verify your email id to complete registration process.</h1>';
+                        echo '<h4 style="text-align:left;">Thanks For Registration. Please verify your email id to complete registration process.</h4>';
                     }
                     ?>
                 </div>
-                <div class="panel-body">
-                    
+                <div class="panel-body" style="min-height: 200px">
+
                 </div>
             </div>
         </div>
