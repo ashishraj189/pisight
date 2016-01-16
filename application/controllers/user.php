@@ -165,7 +165,7 @@ class User extends CI_Controller {
             $user_email = $input["user_email"];
             //$user_id =  $this->encrypt->encode($user_id);
             $user_pass = md5($input['user_pass']);
-            $this->form_validation->set_rules('user_email', 'Email', 'trim|required');
+            $this->form_validation->set_rules('user_email', 'Email', 'trim|required|valid_email|callback_verify_login');
             $this->form_validation->set_rules('user_pass', 'password', 'trim|required');
             $this->form_validation->set_error_delimiters('<em>', '</em>');
             if ($this->form_validation->run()) {
@@ -231,6 +231,17 @@ class User extends CI_Controller {
 
         
     }
+    
+    /* public function login check*/
+public function verify_login($str) {
+       $query = $this->db->get_where('user', array('email'=>$str,'is_verified' => 1,'status'=>1), 1);
+       if ($query->num_rows() == 1) {
+           return true;
+       } else {
+           $this->form_validation->set_message('verify_login', 'You are not registered user');
+           return false;
+       }
+   }
 
     public function verify_security_question(){
         if ($this->input->post('submit_ques')) {

@@ -31,12 +31,53 @@
         <script src="<?php echo base_url(); ?>assets/plugins/3d-bold-navigation/js/modernizr.js"></script>
         <script src="<?php echo base_url(); ?>assets/plugins/offcanvasmenueffects/js/snap.svg-min.js"></script>
 
+        <script src="<?php echo base_url(); ?>assets/plugins/jquery/jquery-2.1.4.min.js"></script>
+        
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
         <![endif]-->
+
+        <style>
+            .sh{
+                width: 100%; 
+                background-color: #fff;
+                height: 50px; 
+                border-radius: 5px;
+                border:1px solid #ccc;
+                margin-top: 3px;
+                padding-left: 20px;   
+                box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.1);
+            }
+            .sc{
+                width: 100%; 
+                background-color: rgba(229, 229, 229, 0.28);
+                height: 50px; 
+                border-radius: 5px;
+                border:1px solid #ccc;
+                box-shadow: 0px 5px 5px -5px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                font-weight: 700;
+                text-align: center;
+            }
+            .sh a,.sc a{
+                margin-left: 40px;
+            }
+            .firstsh{
+                margin-top: 50px;
+            }
+
+            .panel-body{
+                padding:0px !important;
+            }
+            #accordion .panel .panel-heading{
+                padding: 10px;
+            }
+
+
+        </style>
 
     </head>
     <body class="page-header-fixed">
@@ -56,30 +97,31 @@
                         <img class="img-responsive" src="<?php echo base_url(); ?>assets/images/logo.png">
                         <div class="top-menu">  
                             <ul class="nav navbar-nav navbar-right" style="margin-top:-57px; color:#fff; font-weight: 400;">
-                                <li>
-                                    <a href="#" class="log-out waves-effect waves-button waves-classic">
-                                        <span>HOW IT WORKS</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="log-out waves-effect waves-button waves-classic">
-                                        <span>FAQ</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="log-out waves-effect waves-button waves-classic">
-                                        <span>MOBILE APP</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="log-out waves-effect waves-button waves-classic">
-                                        <span>BLOG</span>
-                                    </a>
-                                </li>
                                 <?php
                                 $logged_in = $this->session->userdata('logged_in');
                                 if (empty($logged_in)) {
                                     ?>
+
+                                    <li>
+                                        <a href="#" class="log-out waves-effect waves-button waves-classic">
+                                            <span>HOW IT WORKS</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="log-out waves-effect waves-button waves-classic">
+                                            <span>FAQ</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="log-out waves-effect waves-button waves-classic">
+                                            <span>MOBILE APP</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="log-out waves-effect waves-button waves-classic">
+                                            <span>BLOG</span>
+                                        </a>
+                                    </li>
                                     <li>
                                         <a href="<?php echo site_url('user/signup'); ?>" class="log-out waves-effect waves-button waves-classic">
                                             <span>SIGNUP</span>
@@ -90,6 +132,38 @@
                                             <span>LOGIN</span>
                                         </a>
                                     </li>
+                                <?php } else { ?>
+                                    <li>
+                                        <a href="#" class="log-out waves-effect waves-button waves-classic">
+                                            <span>OVERVIEW</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="log-out waves-effect waves-button waves-classic">
+                                            <span>TRANSACTION</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="log-out waves-effect waves-button waves-classic">
+                                            <span>BUDGET</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="log-out waves-effect waves-button waves-classic">
+                                            <span>TRENDS</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="log-out waves-effect waves-button waves-classic">
+                                            <span>GOALS</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#" class="log-out waves-effect waves-button waves-classic">
+                                            <span>INVESTMENTS</span>
+                                        </a>
+                                    </li>
+
                                 <?php } ?>
                             </ul><!-- Nav --> 
                         </div><!-- Top Menu -->
