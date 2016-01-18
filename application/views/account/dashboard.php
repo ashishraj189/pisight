@@ -18,294 +18,56 @@
         </div>
     </div>
     <div class="row">   
-        <div class="col-md-3">
-
-            <div class="panel-heading clearfix">
-                <h3 class="panel-title">Accordion</h3>
-            </div>
-            <div class="panel-body">
-                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingOne">
-                            <h4 class="panel-title">
-                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                    <img src="<?php echo base_url(); ?>assets/images/bank.png" alt=""> <span style="margin-left:40px;">Bank</span>
-                                </a>
-                            </h4>
-                        </div>
-                        <div style="height: 0px;" aria-expanded="false" id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                            <div class="panel-body">
-                                <?php
-                                echo $accounts_list_bank;
-                                ?>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingtwo">
-                            <h4 class="panel-title">
-                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapsetwo" aria-expanded="false" aria-controls="collapsetwo">
-                                    <img src="<?php echo base_url(); ?>assets/images/creditcards.png" alt=""> <span style="margin-left:40px;">Credit Cards</span>
-                                </a>
-                            </h4>
-                        </div>
-                        <div style="height: 0px;" aria-expanded="false" id="collapsetwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingtwo">
-                            <div class="panel-body">
-                                <?php echo $accounts_list_credit; ?>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingThree">
-                            <h4 class="panel-title">
-                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    <img src="<?php echo base_url(); ?>assets/images/Loans.png" alt=""> <span style="margin-left:40px;">Loan</span>
-                                </a>
-                            </h4>
-                        </div>
-                        <div style="height: 0px;" aria-expanded="false" id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
-                            <div class="panel-body">
-                                <div class="sc">HSBC $455.44</div>
-                                <div class="sc">HSBC $455.44</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingfour">
-                            <h4 class="panel-title">
-                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapsefour" aria-expanded="false" aria-controls="collapseOne">
-                                    <img src="<?php echo base_url(); ?>assets/images/investment.png" alt=""> <span style="margin-left:40px;">Investment</span>
-                                </a>
-                            </h4>
-                        </div>
-                        <div style="height: 0px;" aria-expanded="false" id="collapsefour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                            <div class="panel-body">
-                                <div class="sc">HSBC $455.44</div>
-                                <div class="sc">HSBC $455.44</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingfive">
-                            <h4 class="panel-title">
-                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapsefive" aria-expanded="false" aria-controls="collapseOne">
-                                    <img src="<?php echo base_url(); ?>assets/images/property.png" alt=""> <span style="margin-left:40px;">Property</span>
-                                </a>
-                            </h4>
-                        </div>
-                        <div style="height: 0px;" aria-expanded="false" id="collapsefive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                            <div class="panel-body">
-                                <div class="sc">HSBC $455.44</div>
-                                <div class="sc">HSBC $455.44</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="panel panel-default">
-                        <div class="panel-heading" role="tab" id="headingsix">
-                            <h4 class="panel-title">
-                                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapsesix" aria-expanded="false" aria-controls="collapseOne">
-                                    <img src="<?php echo base_url(); ?>assets/images/deposit.png" alt=""> <span style="margin-left:40px;">Deposit</span>
-                                </a>
-                            </h4>
-                        </div>
-                        <div style="height: 0px;" aria-expanded="false" id="collapsesix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                            <div class="panel-body">
-                                <div class="sc">HSBC $455.44</div>
-                                <div class="sc">HSBC $455.44</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-        </div>
+        <?php $this->load->view('common/left_accordian'); ?>
         <div class="col-md-9">
-
-            <div class="panel panel-white">
-                <div class="panel-heading clearfix">
-                    <h4 class="panel-title">BUDGETS</h4>
-                </div>
-                <div class="panel-body">  
-                    <div class="row" style="border-bottom:2px dotted; padding-top:10px; padding-bottom:0px;">                                        
-                        <div class="col-md-3"> 
-                            Total
-                        </div>                                                 
-                        <div class="col-md-7"> 
-                            <div class="progress progress-md">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                    <span class="sr-only">60% Complete (warning)</span>
-                                </div>                                        
+                            <h1>TREND</h1>
+                             <div class="panel panel-white">                                
+                                <div class="panel-body">  
+                                    <div class="row" >                                        
+                                        <div class="col-md-12"> 
+                                            <h1><span style="color:#5d5d5d;">You haven't added any account.</span> You should get started now.</h1>
+                                        </div>                                       
+                                    </div>                                   
+                                    <div class="row">
+                                        <div class="col-md-12"style="padding-top:20px;">
+                                            <input type="submit" class="btn btn-info btn-rounded pull-right" name="aa" value="+Add Trends">                                               
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-1"> 
-                            $1159
-                        </div> 
-                        <div class="col-md-1"> 
-                            848 Left
-                        </div> 
-                    </div>
+                            <h2>BUDGET NOV 15</h2>
+                             <div class="panel panel-white">                                
+                                <div class="panel-body">  
+                                    <div class="row" >                                        
+                                        <div class="col-md-12"> 
+                                            <h1><span style="color:#5d5d5d;">You haven't added any account.</span> You should get started now.</h1>
+                                        </div>                                       
+                                    </div>                                   
+                                    <div class="row">
+                                        <div class="col-md-12"style="padding-top:20px;">
+                                            <input type="submit" class="btn btn-info btn-rounded pull-right" name="aa" value="+Add Budgets">                                               
+                                        </div>
+                                    </div>
 
-                    <div class="row" style="border-bottom:2px dotted; padding-top:10px; padding-bottom:0px;">                                        
-                        <div class="col-md-3"> 
-                            Total
-                        </div>                                                 
-                        <div class="col-md-7"> 
-                            <div class="progress progress-md">
-                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                    <span class="sr-only">60% Complete (warning)</span>
-                                </div>                                        
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-1"> 
-                            $1159
-                        </div> 
-                        <div class="col-md-1"> 
-                            848 Left
-                        </div> 
-                    </div> 
+                            <h1>GOALS</h1>
+                            <div class="panel panel-white">                                
+                                <div class="panel-body">  
+                                    <div class="row" >                                        
+                                        <div class="col-md-12"> 
+                                            <h1><span style="color:#5d5d5d;">You haven't added any account.</span> You should get started now.</h1>
+                                        </div>                                       
+                                    </div>                                   
+                                    <div class="row">
+                                        <div class="col-md-12"style="padding-top:20px;">
+                                            <input type="submit" class="btn btn-info btn-rounded pull-right" name="aa" value="+Add Goals">                                               
+                                        </div>
+                                    </div>
 
-                    <div class="row" style="border-bottom:2px dotted; padding-top:10px; padding-bottom:0px;">                                        
-                        <div class="col-md-3"> 
-                            Total
-                        </div>                                                 
-                        <div class="col-md-7"> 
-                            <div class="progress progress-md">
-                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                    <span class="sr-only">60% Complete (warning)</span>
-                                </div>                                        
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-1"> 
-                            $1159
-                        </div> 
-                        <div class="col-md-1"> 
-                            848 Left
-                        </div> 
-                    </div> 
-
-                    <div class="row" style="border-bottom:2px dotted; padding-top:10px; padding-bottom:0px;">                                        
-                        <div class="col-md-3"> 
-                            Total
-                        </div>                                                 
-                        <div class="col-md-7"> 
-                            <div class="progress progress-md">
-                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                    <span class="sr-only">60% Complete (warning)</span>
-                                </div>                                        
-                            </div>
-                        </div>
-                        <div class="col-md-1"> 
-                            $1159
-                        </div> 
-                        <div class="col-md-1"> 
-                            848 Left
-                        </div> 
-                    </div> 
-                    <div class="row">
-                        <div class="col-md-12"style="padding-top:20px;">
-                            <input type="submit" class="btn btn-info btn-rounded pull-right" name="aa" value="Add Budgets">
-                            <input type="submit" class="btn btn-info btn-rounded pull-right" name="aa" value="See All Budgets">      
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="panel panel-white">
-                <div class="panel-heading clearfix">
-                    <h4 class="panel-title">GOALS</h4>
-                </div>
-                <div class="panel-body">  
-                    <div class="row" style="border-bottom:2px dotted; padding-top:10px; padding-bottom:0px;">                                        
-                        <div class="col-md-3"> 
-                            Total
-                        </div>                                                 
-                        <div class="col-md-7"> 
-                            <div class="progress progress-md">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                    <span class="sr-only">60% Complete (warning)</span>
-                                </div>                                        
-                            </div>
-                        </div>
-                        <div class="col-md-1"> 
-                            $1159
-                        </div> 
-                        <div class="col-md-1"> 
-                            848 Left
-                        </div> 
-                    </div>
-
-                    <div class="row" style="border-bottom:2px dotted; padding-top:10px; padding-bottom:0px;">                                        
-                        <div class="col-md-3"> 
-                            Total
-                        </div>                                                 
-                        <div class="col-md-7"> 
-                            <div class="progress progress-md">
-                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                    <span class="sr-only">60% Complete (warning)</span>
-                                </div>                                        
-                            </div>
-                        </div>
-                        <div class="col-md-1"> 
-                            $1159
-                        </div> 
-                        <div class="col-md-1"> 
-                            848 Left
-                        </div> 
-                    </div> 
-
-                    <div class="row" style="border-bottom:2px dotted; padding-top:10px; padding-bottom:0px;">                                        
-                        <div class="col-md-3"> 
-                            Total
-                        </div>                                                 
-                        <div class="col-md-7"> 
-                            <div class="progress progress-md">
-                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                    <span class="sr-only">60% Complete (warning)</span>
-                                </div>                                        
-                            </div>
-                        </div>
-                        <div class="col-md-1"> 
-                            $1159
-                        </div> 
-                        <div class="col-md-1"> 
-                            848 Left
-                        </div> 
-                    </div> 
-
-                    <div class="row" style="border-bottom:2px dotted; padding-top:10px; padding-bottom:0px;">                                        
-                        <div class="col-md-3"> 
-                            Total
-                        </div>                                                 
-                        <div class="col-md-7"> 
-                            <div class="progress progress-md">
-                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                    <span class="sr-only">60% Complete (warning)</span>
-                                </div>                                        
-                            </div>
-                        </div>
-                        <div class="col-md-1"> 
-                            $1159
-                        </div> 
-                        <div class="col-md-1"> 
-                            848 Left
-                        </div> 
-                    </div> 
-                    <div class="row">
-                        <div class="col-md-12"style="padding-top:20px;">
-                            <input type="submit" class="btn btn-info btn-rounded pull-right" name="aa" value="Add Budgets">
-                            <input type="submit" class="btn btn-info btn-rounded pull-right" name="aa" value="See All Budgets">      
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>                        
+                        </div>                                               
     </div><!-- Row -->
 </div><!-- Main Wrapper -->
 
@@ -316,7 +78,8 @@
         <div class="modal-content" style="background-color:transparent; margin-top: 140px;">
             <div class="modal-header">
 
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top:12px; margin-right: -14px;opacity:1;"><img src="<?php echo base_url(); ?>assets/images/close.png"></button>                                                            
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top:12px; margin-right: -14px;opacity:1;">
+                    <img src="<?php echo base_url(); ?>assets/images/close.png"></button>                                                            
             </div>
             <div class="modal-body">
                 <div class="row">
@@ -513,7 +276,7 @@
                                                         $.ajax({
                                                             type: "POST",
                                                             url: "<?php echo site_url() . "/account/name_institution_for_add_transaction" ?>",
-                                                            data: {account_type:$(this).val()},
+                                                            data: {account_type: $(this).val()},
                                                             cache: false,
                                                             success: function (html)
                                                             {
@@ -522,19 +285,6 @@
                                                             }
                                                         });
                                                     });
-//                                                    $('.tran_type').change(function () {
-//                                                        alert('llll');
-//                                                        $.ajax({
-//                                                            type: "POST",
-//                                                            url: "<?php echo site_url() . "/account/name_institution_for_add_transaction" ?>",
-//                                                            data: "account_type = " + $(this).val(),
-//                                                            cache: false,
-//                                                            success: function (html)
-//                                                            {
-//                                                                $("#trans_account_select").html(html);
-//                                                            }
-//                                                        });
-//                                                    });
                                                 });
                                             </script>
                                         </div>                                                
@@ -549,6 +299,163 @@
         </div>
     </div>
 </div>
+
+<!--Add Deposit Model Start Here-->
+<!-- Modal -->
+<div class="modal fade" id="add_deposit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 100%; max-width: 620px; min-width: 300px;">
+        <div class="modal-content" style="background-color:transparent; margin-top: 140px;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top:12px; margin-right: -14px;opacity:1;">
+                    <img src="<?php echo base_url(); ?>assets/images/close.png"></button>                                                            
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-white" style="padding-top:15px; padding-bottom: 60px;">
+                            <div class="panel-body">
+                                <div class="col-md-12"><h1 style="padding-bottom:20px;">Add Deposit</h1></div>
+                                <form>
+                                    <div class="col-md-6">
+                                        <div class="form-group">  
+                                            <label>Add Loan amount</label>
+                                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="">
+                                        </div>
+                                        <div class="form-group" style="margin-top: 30px; "> 
+                                            <label>Value of the property</label><br>
+                                            <input type="text" style="width:40%;display: inline-block !important;" class="form-control" id="exampleInputPassword1" placeholder="currency...">
+                                            <input type="text" style="width:58%;display: inline-block !important;" class="form-control" id="exampleInputPassword1" placeholder="amount...">
+                                        </div> 
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">   
+                                            <label>Address of the property</label>
+                                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder=""> 
+                                        </div>
+                                        <div class="form-group" style="margin-top: 30px;">                                            
+                                            <label>Date of purchase</label>
+                                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="DD/MM/YYYY">
+                                        </div> 
+                                        <div class="form-group" style="margin-top: 30px;">                                            
+                                            <button type="submit" class="btn btn-info pull-right" style="padding-right: 30px; padding-left: 30px;">Submit</button>
+                                        </div>
+                                    </div>                                                                                            
+                                </form>
+                            </div>
+                        </div>                                 
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End of add deposit model html-->
+
+
+<!--Add Property HTML Start Here-->
+<!-- Modal -->
+<div class="modal fade" id="add_property" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 100%; max-width: 620px; min-width: 300px;">
+        <div class="modal-content" style="background-color:transparent; margin-top: 140px;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top:12px; margin-right: -14px;opacity:1;">
+                    <img src="<?php echo base_url(); ?>assets/images/close.png"></button>                                                            
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-white" style="padding-top:15px; padding-bottom: 60px;">
+                            <div class="panel-body">
+                                <div class="col-md-12"><h1 style="padding-bottom:20px;">Add Property</h1></div>
+                                <form>
+                                    <div class="col-md-6">
+                                        <div class="form-group">  
+                                            <label>Name of the property</label>
+                                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="">
+                                        </div>
+                                        <div class="form-group" style="margin-top: 30px; "> 
+                                            <label>Value of the property</label><br>
+                                            <input type="text" style="width:40%;display: inline-block !important;" class="form-control" id="exampleInputPassword1" placeholder="currency...">
+                                            <input type="text" style="width:58%;display: inline-block !important;" class="form-control" id="exampleInputPassword1" placeholder="amount...">
+                                        </div> 
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">   
+                                            <label>Address of the property</label>
+                                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder=""> 
+                                        </div>
+                                        <div class="form-group" style="margin-top: 30px;">                                            
+                                            <label>Date of purchase</label>
+                                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="DD/MM/YYYY">
+                                        </div> 
+                                        <div class="form-group" style="margin-top: 30px;">                                            
+                                            <button type="submit" class="btn btn-info pull-right" style="padding-right: 30px; padding-left: 30px;">Submit</button>
+                                        </div>
+                                    </div>                                                                                            
+                                </form>
+                            </div>
+                        </div>                                 
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Here-->
+
+<!--Add Loan HTML Start Here-->
+<!-- Modal -->
+<div class="modal fade" id="add_loan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 100%; max-width: 620px; min-width: 300px;">
+        <div class="modal-content" style="background-color:transparent; margin-top: 140px;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="margin-top:12px; margin-right: -14px;opacity:1;">
+                    <img src="<?php echo base_url(); ?>assets/images/close.png"></button>                                                            
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-white" style="padding-top:15px; padding-bottom: 60px;">
+
+                            <div class="panel-body">
+                                <div class="col-md-12"><h1 style="padding-bottom:20px;">Add Loan</h1></div>
+                                <form>
+                                    <div class="col-md-6">
+                                        <div class="form-group">  
+                                            <label>Add Loan amount</label>
+                                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="">
+                                        </div>
+                                        <div class="form-group" style="margin-top: 30px; "> 
+                                            <label>Value of the property</label><br>
+                                            <input type="text" style="width:40%;display: inline-block !important;" class="form-control" id="exampleInputPassword1" placeholder="currency...">
+                                            <input type="text" style="width:58%;display: inline-block !important;" class="form-control" id="exampleInputPassword1" placeholder="amount...">
+                                        </div> 
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">   
+                                            <label>Address of the property</label>
+                                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder=""> 
+                                        </div>
+                                        <div class="form-group" style="margin-top: 30px;">                                            
+                                            <label>Date of purchase</label>
+                                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="DD/MM/YYYY">
+                                        </div> 
+                                        <div class="form-group" style="margin-top: 30px;">                                            
+                                            <button type="submit" class="btn btn-info pull-right" style="padding-right: 30px; padding-left: 30px;">Submit</button>
+                                        </div>
+                                    </div>                                                                                            
+                                </form>
+                            </div>
+                        </div>                                 
+                    </div>                            
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Here-->
+
 <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>-->
 <script type="text/javascript">
     $(document).ready(function () {
