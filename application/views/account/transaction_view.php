@@ -13,13 +13,11 @@
             </div>
             <div class="sc" style="max-width:305px; text-align: left; background-color: #fff; height: 57px; padding-top: 13px;">  
                 <img src="<?php echo base_url(); ?>assets/images/addnew.png" alt=""> <a href="#" style="text-decoration: none;" data-toggle="modal" data-target="#myModal"><span style="margin-left:10px; ">Add Account</span></a>
-
             </div>
         </div>
     </div>
     <div class="row">   
         <div class="col-md-3">
-
             <div class="panel-heading clearfix">
                 <h3 class="panel-title">Accordion</h3>
             </div>
@@ -120,191 +118,21 @@
                     </div>
                 </div>
             </div>
-
-
-
         </div>
         <div class="col-md-9">
-
-            <div class="panel panel-white">
-                <div class="panel-heading clearfix">
-                    <h4 class="panel-title">BUDGETS</h4>
-                </div>
-                <div class="panel-body">  
-                    <div class="row" style="border-bottom:2px dotted; padding-top:10px; padding-bottom:0px;">                                        
-                        <div class="col-md-3"> 
-                            Total
-                        </div>                                                 
-                        <div class="col-md-7"> 
-                            <div class="progress progress-md">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                    <span class="sr-only">60% Complete (warning)</span>
-                                </div>                                        
-                            </div>
-                        </div>
-                        <div class="col-md-1"> 
-                            $1159
-                        </div> 
-                        <div class="col-md-1"> 
-                            848 Left
-                        </div> 
-                    </div>
-
-                    <div class="row" style="border-bottom:2px dotted; padding-top:10px; padding-bottom:0px;">                                        
-                        <div class="col-md-3"> 
-                            Total
-                        </div>                                                 
-                        <div class="col-md-7"> 
-                            <div class="progress progress-md">
-                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                    <span class="sr-only">60% Complete (warning)</span>
-                                </div>                                        
-                            </div>
-                        </div>
-                        <div class="col-md-1"> 
-                            $1159
-                        </div> 
-                        <div class="col-md-1"> 
-                            848 Left
-                        </div> 
-                    </div> 
-
-                    <div class="row" style="border-bottom:2px dotted; padding-top:10px; padding-bottom:0px;">                                        
-                        <div class="col-md-3"> 
-                            Total
-                        </div>                                                 
-                        <div class="col-md-7"> 
-                            <div class="progress progress-md">
-                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                    <span class="sr-only">60% Complete (warning)</span>
-                                </div>                                        
-                            </div>
-                        </div>
-                        <div class="col-md-1"> 
-                            $1159
-                        </div> 
-                        <div class="col-md-1"> 
-                            848 Left
-                        </div> 
-                    </div> 
-
-                    <div class="row" style="border-bottom:2px dotted; padding-top:10px; padding-bottom:0px;">                                        
-                        <div class="col-md-3"> 
-                            Total
-                        </div>                                                 
-                        <div class="col-md-7"> 
-                            <div class="progress progress-md">
-                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                    <span class="sr-only">60% Complete (warning)</span>
-                                </div>                                        
-                            </div>
-                        </div>
-                        <div class="col-md-1"> 
-                            $1159
-                        </div> 
-                        <div class="col-md-1"> 
-                            848 Left
-                        </div> 
-                    </div> 
-                    <div class="row">
-                        <div class="col-md-12"style="padding-top:20px;">
-                            <input type="submit" class="btn btn-info btn-rounded pull-right" name="aa" value="Add Budgets">
-                            <input type="submit" class="btn btn-info btn-rounded pull-right" name="aa" value="See All Budgets">      
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <div class="panel panel-white">
-                <div class="panel-heading clearfix">
-                    <h4 class="panel-title">GOALS</h4>
-                </div>
-                <div class="panel-body">  
-                    <div class="row" style="border-bottom:2px dotted; padding-top:10px; padding-bottom:0px;">                                        
-                        <div class="col-md-3"> 
-                            Total
-                        </div>                                                 
-                        <div class="col-md-7"> 
-                            <div class="progress progress-md">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                    <span class="sr-only">60% Complete (warning)</span>
-                                </div>                                        
-                            </div>
-                        </div>
-                        <div class="col-md-1"> 
-                            $1159
-                        </div> 
-                        <div class="col-md-1"> 
-                            848 Left
-                        </div> 
-                    </div>
-
-                    <div class="row" style="border-bottom:2px dotted; padding-top:10px; padding-bottom:0px;">                                        
-                        <div class="col-md-3"> 
-                            Total
-                        </div>                                                 
-                        <div class="col-md-7"> 
-                            <div class="progress progress-md">
-                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                    <span class="sr-only">60% Complete (warning)</span>
-                                </div>                                        
-                            </div>
-                        </div>
-                        <div class="col-md-1"> 
-                            $1159
-                        </div> 
-                        <div class="col-md-1"> 
-                            848 Left
-                        </div> 
-                    </div> 
-
-                    <div class="row" style="border-bottom:2px dotted; padding-top:10px; padding-bottom:0px;">                                        
-                        <div class="col-md-3"> 
-                            Total
-                        </div>                                                 
-                        <div class="col-md-7"> 
-                            <div class="progress progress-md">
-                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                    <span class="sr-only">60% Complete (warning)</span>
-                                </div>                                        
-                            </div>
-                        </div>
-                        <div class="col-md-1"> 
-                            $1159
-                        </div> 
-                        <div class="col-md-1"> 
-                            848 Left
-                        </div> 
-                    </div> 
-
-                    <div class="row" style="border-bottom:2px dotted; padding-top:10px; padding-bottom:0px;">                                        
-                        <div class="col-md-3"> 
-                            Total
-                        </div>                                                 
-                        <div class="col-md-7"> 
-                            <div class="progress progress-md">
-                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
-                                    <span class="sr-only">60% Complete (warning)</span>
-                                </div>                                        
-                            </div>
-                        </div>
-                        <div class="col-md-1"> 
-                            $1159
-                        </div> 
-                        <div class="col-md-1"> 
-                            848 Left
-                        </div> 
-                    </div> 
-                    <div class="row">
-                        <div class="col-md-12"style="padding-top:20px;">
-                            <input type="submit" class="btn btn-info btn-rounded pull-right" name="aa" value="Add Budgets">
-                            <input type="submit" class="btn btn-info btn-rounded pull-right" name="aa" value="See All Budgets">      
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+            <div><strong><?php echo $account_name; ?></strong></div>
+            <div>TOTAL AMOUNT : <?php echo $account_bal; ?></div>
+            <?php if ($transaction_rows != '') { ?>
+                <table border="1" width="100%">
+                    <tr>
+                        <th>Date</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Amount</th>
+                    </tr>
+                    <?php echo $transaction_rows; ?> 
+                </table>
+            <?php } ?>
         </div>                        
     </div><!-- Row -->
 </div><!-- Main Wrapper -->
@@ -335,7 +163,7 @@
                                         <li role="presentation"><a href="#tab3" id="auto_refresh" role="tab" data-toggle="tab">Add Transaction</a></li>
 
                                     </ul>
-                                    <!-- Tab panes -->
+                                    <!-- modal tab -->
                                     <div class="tab-content" style="min-height: 230px;">
                                         <div role="tabpanel" class="tab-pane active" id="tab1">
                                             <div class="col-md-12">
