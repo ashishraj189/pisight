@@ -118,16 +118,18 @@ class Account_model extends CI_Model {
     }
 
     function get_institution_list_for_add_transaction($account_type, $user_id) {
-        $this->db->select("account_id, account_name");
+        $this->db->select("account_id, UCASE(account_name) as account_name");
         $this->db->from('account');
         $this->db->where('user_id', $user_id, FALSE);
-        $this->db->where('account_type', $account_type);
+        if ($account_type != "") {
+            $this->db->where('account_type', $account_type);
+        }
         $query = $this->db->get();
         //echo $this->db->last_query();
         $result[''] = 'Select Institution Name';
         if ($query->num_rows() > 0) {
             //return $query->result();
-           // print_r($query->result());
+            // print_r($query->result());
             foreach ($query->result() as $row) {
                 $result[$row->account_id] = $row->account_name;
             }
@@ -149,6 +151,25 @@ class Account_model extends CI_Model {
                 $result[$row->category_id] = $row->category_name;
             }
             return $result;
+        } else {
+            return NULL;
+        }
+    }
+
+    /* Function for getting currency */
+
+    function get_Currency() {
+        $this->db->from("currency");
+        $sql = $this->db->get();
+        if ($sql->num_rows() > 0) {
+            $arrcur = array();
+            $result = $sql->result();
+            foreach ($result as $curkey => $curval) {
+                $cur_id = $curval->currency_id;
+                $cur_val = $curval->currency_name;
+                $arrcur[$cur_id] = $cur_val;
+            }
+            return $arrcur;
         } else {
             return NULL;
         }

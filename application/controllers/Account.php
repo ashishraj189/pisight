@@ -45,6 +45,12 @@ class Account extends CI_Controller {
                 }
             }
         }
+        /* Found User Account List Behalf Of Login Id */
+        $user_id = $logged_in['user_id'];
+        $val['institution_name_list'] = $this->account_model->get_institution_list_for_add_transaction("", $user_id);
+        $val['currency'] = $this->account_model->get_Currency();
+        /* End Here */
+
         $this->load->view('common/header');
         $this->load->view('account/dashboard', $val);
         $this->load->view('common/footer');
@@ -212,9 +218,91 @@ class Account extends CI_Controller {
         $user_id = $logged_in['user_id'];
         $account_type = $this->input->post('account_type');
         if ($account_type != '') {
-            $institution_name_list = $this->account_model->get_institution_list_for_add_transaction($account_type='Credit', $user_id);
+            $institution_name_list = $this->account_model->get_institution_list_for_add_transaction($account_type = 'Credit', $user_id);
             echo form_dropdown('trans_account', $institution_name_list, '', 'class="form-control" id="trans_account"');
         }
+    }
+
+    public function addLoan() {
+        $input = $this->input->post();
+        $loan_account = $input["loan_account"];
+        $loan_acnumber = $input["loan_acnumber"];
+        $loan_currency = $input["loan_currency"];
+        $loan_outamt = $input["loan_outamt"];
+        $start_date = $input["start_date"];
+        $end_date = $input["end_date"];
+        if (strtotime($start_date) > strtotime($end_date)) {
+            echo "Please insert last date greater than start date";
+            exit;
+        }
+        $date = date('Y-m-d h:i:s', time());
+        $start_date = date('Y-m-d', strtotime($start_date));
+        $end_date = date('Y-m-d', strtotime($end_date));
+        $inputData = array(
+            'loan_account_id' => $loan_account,
+            'loan_account_num' => $loan_acnumber,
+            'loan_currency_id' => $loan_currency,
+            'loan_outstanding_amount' => $loan_outamt,
+            'loan_start_date' => $start_date,
+            'loan_end_date' => $end_date,
+            'loan_added_at' => $date,
+            'loan_updated_at' => $date
+        );
+        $loan_added = $this->user_model->insertData($inputData, 'loan');
+        if ($loan_added) {
+            echo 'Loan has been added';
+        }
+    }
+    
+    public function account_statement_upload() {
+        $data = array();
+        $data['error'] = '';
+        $data['success'] = '';
+        //$this->load->library('upload');
+        if (isset($_FILES["sold_property_file"]["name"]) && $_FILES["sold_property_file"]["name"] != "") {
+
+            $name = $_FILES["sold_property_file"]["name"];
+            $ext = end(explode(".", $name));
+            $config['allowed_types'] = 'csv';
+            $config['max_size'] = '2048';
+            $config['upload_path'] = './assets/_temp/';
+            $config['file_name'] = $name;
+            $this->upload->initialize($config);
+            if (!$this->upload->do_upload('sold_property_file')) {
+                $data['error'] = $this->upload->display_errors();
+            } else {
+                $upload_data = $this->upload->data();
+
+                $filepath = $upload_data['full_path'];
+                //load csv reader
+                $this->load->library('CSVReader');
+                $csvdata = $this->csvreader->parse_file($filepath);
+                $insert_rows = array();
+                foreach ($csvdata as $key => $row) {
+                    $date_ts = strtotime($row['Date']);
+                    $date = date("Y-m-d H:i:s", $date_ts);
+                    $insert_rows[] = array(
+                        'sold_property_type' => $row['Type'],
+                        'sold_property_price' => $row['Price'],
+                        'sold_property_city' => $row['City'],
+                        'sold_property_state' => $row['State'],
+                        'sold_property_date' => $date,
+                        'sold_property_quality' => $row['Quality'],
+                        'sold_property_cap_rate' => $row['Cap Rate'],
+                        'sold_property_price_sf' => $row['Price/SF'],
+                        'sold_property_price_sf_land' => $row['Price/SF Land'],
+                    ); //$val->Retail;
+                    //$row_data[$key] = str_replace('"', '', $val);
+                }
+                $insert_return = $this->admin_common_model->insert_sold_property($insert_rows);
+
+                if ($insert_return) {
+                    $data['success'] = 'File uploaded successfully';
+                }
+            }
+        }
+        $data['main_content'] = 'admin/property/sold_list_upload';
+        $this->load->view('includes/admin_template', $data);
     }
 
 }
