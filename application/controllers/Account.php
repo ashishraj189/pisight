@@ -50,6 +50,12 @@ class Account extends CI_Controller {
         $val['institution_name_list'] = $this->account_model->get_institution_list_for_add_transaction("", $user_id);
         $val['currency'] = $this->account_model->get_Currency();
         /* End Here */
+        /* code for display loan amount and loan account */
+        $val['loan_display'] = $this->account_model->loan_account_name($user_id);
+        /* End here */
+        /* code for display loan amount and loan account */
+        $val['deposit_display'] = $this->account_model->deposit_account_name($user_id);
+        /* End here */
 
         $this->load->view('common/header');
         $this->load->view('account/dashboard', $val);
@@ -238,7 +244,10 @@ class Account extends CI_Controller {
         $date = date('Y-m-d h:i:s', time());
         $start_date = date('Y-m-d', strtotime($start_date));
         $end_date = date('Y-m-d', strtotime($end_date));
+        $logged_in = $this->session->userdata('logged_in');
+        $user_id = $logged_in['user_id'];
         $inputData = array(
+            'loan_user_id' => $user_id,
             'loan_account_id' => $loan_account,
             'loan_account_num' => $loan_acnumber,
             'loan_currency_id' => $loan_currency,
@@ -253,7 +262,71 @@ class Account extends CI_Controller {
             echo 'Loan has been added';
         }
     }
-    
+
+    public function property_vals() {
+
+        $input = $this->input->post();
+        $propery_name = $input["propery_name"];
+        $property_currency = $input["property_currency"];
+        $propery_amount = $input["propery_amount"];
+        $propery_address = $input["propery_address"];
+        $propery_pur_date = $input["propery_pur_date"];
+        $date = date('Y-m-d h:i:s', time());
+        $propery_pur_date = date('Y-m-d', strtotime($propery_pur_date));
+        $logged_in = $this->session->userdata('logged_in');
+        $user_id = $logged_in['user_id'];
+        $inputData = array(
+            'property_user_id' => $user_id,
+            'property_name' => $propery_name,
+            'property_address' => $propery_address,
+            'property_currency' => $property_currency,
+            'property_amount' => $propery_amount,
+            'property_purchage_date' => $propery_pur_date,
+            'property_added_at' => $date,
+            'property_updated_at' => $date,
+            'property_status' => 1
+        );
+        $propery_added = $this->user_model->insertData($inputData, 'property');
+        if ($propery_added) {
+            echo 'Property has been added';
+        }
+    }
+
+    public function deposit_vals() {
+        $input = $this->input->post();
+        $deposit_account = $input["deposit_account"];
+        $deposit_currency = $input["deposit_currency"];
+        $deposit_amount = $input["deposit_amount"];
+        $deposit_endate = $input["deposit_endate"];
+        $deposit_acnumber = $input["deposit_acnumber"];
+        $deposit_stdate = $input["deposit_stdate"];
+        $date = date('Y-m-d h:i:s', time());
+        $deposit_endate = date('Y-m-d', strtotime($deposit_endate));
+        $deposit_stdate = date('Y-m-d', strtotime($deposit_stdate));
+        $logged_in = $this->session->userdata('logged_in');
+        if (strtotime($deposit_stdate) > strtotime($deposit_endate)) {
+            echo "Please insert last date greater than start date";
+            exit;
+        }
+        $user_id = $logged_in['user_id'];
+        $inputData = array(
+            'deposit_user_id' => $user_id,
+            'deposit_account_id' => $deposit_account,
+            'deposit_account_num' => $deposit_acnumber,
+            'deposit_currency_id' => $deposit_currency,
+            'deposit_amount' => $deposit_amount,
+            'deposit_start_date' => $deposit_stdate,
+            'deposit_end_date' => $deposit_endate,
+            'deposit_added_at' => $date,
+            'deposit_updated_at' => $date,
+            'deposit_status' => 1
+        );
+        $deposit_added = $this->user_model->insertData($inputData, 'deposit');
+        if ($deposit_added) {
+            echo 'Deposit has been added';
+        }
+    }
+
     public function account_statement_upload() {
         $data = array();
         $data['error'] = '';

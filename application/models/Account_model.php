@@ -175,4 +175,38 @@ class Account_model extends CI_Model {
         }
     }
 
+    /* Getting bank name and loan account from loan table */
+
+    function loan_account_name($user_id) {
+        $this->db->select('UCASE(account.account_name) as account_name ,currency.currency_code as currency_type,loan.loan_outstanding_amount as loan_amount');
+        $this->db->from('loan');
+        $this->db->join('account', 'loan.loan_account_id = account.account_id');
+        $this->db->join('currency', 'loan.loan_currency_id = currency.currency_id');
+        $this->db->where('loan.loan_user_id', $user_id);
+        $this->db->order_by("account.account_name", "asc");
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+
+    /* Getting deposit bank name,bank amount,and currency from deposit table */
+
+    function deposit_account_name($user_id) {
+        $this->db->select('UCASE(account.account_name) as account_name ,currency.currency_code as currency_type,deposit.deposit_amount as deposit_amount');
+        $this->db->from('deposit');
+        $this->db->join('account', 'deposit.deposit_account_id = account.account_id');
+        $this->db->join('currency', 'deposit.deposit_currency_id = currency.currency_id');
+        $this->db->where('deposit.deposit_user_id', $user_id);
+        $this->db->order_by("account.account_name", "asc");
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
+
 }

@@ -12,62 +12,69 @@
                 </div>
             </div>
             <div class="sc" style="max-width:305px; text-align: left; background-color: #fff; height: 57px; padding-top: 13px;">  
-                <img src="<?php echo base_url(); ?>assets/images/addnew.png" alt=""> <a href="#" style="text-decoration: none;" data-toggle="modal" data-target="#myModal"><span style="margin-left:10px; ">Add Account</span></a>
-
+                <img src="<?php echo base_url(); ?>assets/images/addnew.png" alt=""> 
+                <a href="#" style="text-decoration: none;" data-toggle="modal" data-target="#myModal">
+                    <span style="margin-left:10px; ">Add Account</span>
+                </a>
             </div>
         </div>
     </div>
     <div class="row">   
-        <?php $this->load->view('common/left_accordian'); ?>
+        <?php
+        $val = array();
+        $val["loan_dis_val"] = $loan_display;
+        $val["deposit_display"] = $deposit_display;
+        $this->load->view('common/left_accordian', $val);
+        ?>
         <div class="col-md-9">
-                            <h1>TREND</h1>
-                             <div class="panel panel-white">                                
-                                <div class="panel-body">  
-                                    <div class="row" >                                        
-                                        <div class="col-md-12"> 
-                                            <h1><span style="color:#5d5d5d;">You haven't added any account.</span> You should get started now.</h1>
-                                        </div>                                       
-                                    </div>                                   
-                                    <div class="row">
-                                        <div class="col-md-12"style="padding-top:20px;">
-                                            <input type="submit" class="btn btn-info btn-rounded pull-right" name="aa" value="+Add Trends">                                               
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <h2>BUDGET NOV 15</h2>
-                             <div class="panel panel-white">                                
-                                <div class="panel-body">  
-                                    <div class="row" >                                        
-                                        <div class="col-md-12"> 
-                                            <h1><span style="color:#5d5d5d;">You haven't added any account.</span> You should get started now.</h1>
-                                        </div>                                       
-                                    </div>                                   
-                                    <div class="row">
-                                        <div class="col-md-12"style="padding-top:20px;">
-                                            <input type="submit" class="btn btn-info btn-rounded pull-right" name="aa" value="+Add Budgets">                                               
-                                        </div>
-                                    </div>
+            <h1>TREND</h1>
+            <div class="panel panel-white">                                
+                <div class="panel-body">  
+                    <div class="row" >                                        
+                        <div class="col-md-12"> 
+                            <h1><span style="color:#5d5d5d;">You haven't added any account.</span> You should get started now.</h1>
+                        </div>                                       
+                    </div>                                   
+                    <div class="row">
+                        <div class="col-md-12"style="padding-top:20px;">
+                            <input type="submit" class="btn btn-info btn-rounded pull-right" name="aa" value="+Add Trends">                                               
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h2>BUDGET NOV 15</h2>
+            <div class="panel panel-white">                                
+                <div class="panel-body">  
+                    <div class="row" >                                        
+                        <div class="col-md-12"> 
+                            <h1><span style="color:#5d5d5d;">You haven't added any account.</span> You should get started now.</h1>
+                        </div>                                       
+                    </div>                                   
+                    <div class="row">
+                        <div class="col-md-12"style="padding-top:20px;">
+                            <input type="submit" class="btn btn-info btn-rounded pull-right" name="aa" value="+Add Budgets">                                               
+                        </div>
+                    </div>
 
-                                </div>
-                            </div>
-                            <h1>GOALS</h1>
-                            <div class="panel panel-white">                                
-                                <div class="panel-body">  
-                                    <div class="row" >                                        
-                                        <div class="col-md-12"> 
-                                            <h1><span style="color:#5d5d5d;">You haven't added any account.</span> You should get started now.</h1>
-                                        </div>                                       
-                                    </div>                                   
-                                    <div class="row">
-                                        <div class="col-md-12"style="padding-top:20px;">
-                                            <input type="submit" class="btn btn-info btn-rounded pull-right" name="aa" value="+Add Goals">                                               
-                                        </div>
-                                    </div>
+                </div>
+            </div>
+            <h1>GOALS</h1>
+            <div class="panel panel-white">                                
+                <div class="panel-body">  
+                    <div class="row" >                                        
+                        <div class="col-md-12"> 
+                            <h1><span style="color:#5d5d5d;">You haven't added any account.</span> You should get started now.</h1>
+                        </div>                                       
+                    </div>                                   
+                    <div class="row">
+                        <div class="col-md-12"style="padding-top:20px;">
+                            <input type="submit" class="btn btn-info btn-rounded pull-right" name="aa" value="+Add Goals">                                               
+                        </div>
+                    </div>
 
-                                </div>
-                            </div>
-                        </div>                                               
+                </div>
+            </div>
+        </div>                                               
     </div><!-- Row -->
 </div><!-- Main Wrapper -->
 
@@ -178,9 +185,6 @@
                                                     <div class="checkbox">                                            
                                                         <span style="position:absolute; margin-top:3px;">Browse File</span>  <input type="file" style="margin-left:91px; margin-top: 40px;height: 34px;" >
                                                     </div>
-
-
-
 
                                                 </div>
                                                 <div class="col-md-6">
@@ -315,32 +319,91 @@
                         <div class="panel panel-white" style="padding-top:15px; padding-bottom: 60px;">
                             <div class="panel-body">
                                 <div class="col-md-12"><h1 style="padding-bottom:20px;">Add Deposit</h1></div>
-                                <form>
+                                <form id="deposit_form">
                                     <div class="col-md-6">
                                         <div class="form-group">  
-                                            <label>Add Loan amount</label>
-                                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="">
+                                            <label>Add Deposit</label>     
+                                            <?php
+                                            if (!isset($institution_name_list)) {
+                                                $institution_name_list = array("" => "Please select account");
+                                            }
+                                            echo form_dropdown('deposit_account', $institution_name_list, '', 'class="form-control" id="deposit_account"');
+                                            ?>
                                         </div>
                                         <div class="form-group" style="margin-top: 30px; "> 
-                                            <label>Value of the property</label><br>
-                                            <input type="text" style="width:40%;display: inline-block !important;" class="form-control" id="exampleInputPassword1" placeholder="currency...">
-                                            <input type="text" style="width:58%;display: inline-block !important;" class="form-control" id="exampleInputPassword1" placeholder="amount...">
+                                            <label>Deposit Amount</label><br>
+                                            <?php
+                                            echo form_dropdown('deposit_currency', $currency, '144', 'class="form-control" id="deposit_currency" style="width:40%;display: inline-block !important;"');
+                                            ?>
+                                            <?php
+                                            $deposit_amount = array(
+                                                'type' => 'text',
+                                                'name' => 'deposit_amount',
+                                                'id' => 'deposit_amount',
+                                                'class' => 'form-control',
+                                                'placeholder' => 'amount...',
+                                                'style' => 'width:58%;display: inline-block !important;',
+                                                'required' => 'required'
+                                            );
+                                            echo form_error('deposit_amount')
+                                            ?>
+                                            <?php echo form_input($deposit_amount); ?>
                                         </div> 
+                                        <div class="form-group">  
+                                            <label>Deposit End Date</label>     
+                                            <?php
+                                            $deposit_endate = array(
+                                                'type' => 'text',
+                                                'name' => 'deposit_endate',
+                                                'id' => 'deposit_endate',
+                                                'class' => 'form-control',
+                                                'placeholder' => 'DD-MM-YYYY',
+                                                'required' => 'required'
+                                            );
+                                            echo form_error('deposit_endate')
+                                            ?>
+                                            <?php echo form_input($deposit_endate) ?>	
+                                        </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">   
-                                            <label>Address of the property</label>
-                                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder=""> 
+                                            <label>Deposit Account Number</label>
+                                            <?php
+                                            $deposit_acnumber = array(
+                                                'type' => 'text',
+                                                'name' => 'deposit_acnumber',
+                                                'id' => 'deposit_acnumber',
+                                                'class' => 'form-control',
+                                                'placeholder' => '',
+                                                'required' => 'required'
+                                            );
+                                            echo form_error('deposit_acnumber')
+                                            ?>
+                                            <?php echo form_input($deposit_acnumber) ?>
+
                                         </div>
                                         <div class="form-group" style="margin-top: 30px;">                                            
-                                            <label>Date of purchase</label>
-                                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="DD/MM/YYYY">
+                                            <label>Deposit Start Date</label>
+                                            <?php
+                                            $deposit_stdate = array(
+                                                'type' => 'text',
+                                                'name' => 'deposit_stdate',
+                                                'id' => 'deposit_stdate',
+                                                'class' => 'form-control',
+                                                'placeholder' => 'DD-MM-YYYY',
+                                                'required' => 'required'
+                                            );
+                                            echo form_error('deposit_stdate')
+                                            ?>
+                                            <?php echo form_input($deposit_stdate) ?>	
+
                                         </div> 
                                         <div class="form-group" style="margin-top: 30px;">                                            
-                                            <button type="submit" class="btn btn-info pull-right" style="padding-right: 30px; padding-left: 30px;">Submit</button>
+                                            <button type="submit" name="deposit_submit" class="btn btn-info pull-right" style="padding-right: 30px; padding-left: 30px;">Submit</button>
                                         </div>
                                     </div>                                                                                            
                                 </form>
+                                <p style="float:left;" id="dep_msg"></p>
                             </div>
                         </div>                                 
                     </div>                            
@@ -367,33 +430,85 @@
                         <div class="panel panel-white" style="padding-top:15px; padding-bottom: 60px;">
                             <div class="panel-body">
                                 <div class="col-md-12"><h1 style="padding-bottom:20px;">Add Property</h1></div>
-                                <form>
+                                <form id="poperty_frm">
                                     <div class="col-md-6">
                                         <div class="form-group">  
                                             <label>Name of the property</label>
-                                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="">
+                                            <?php
+                                            $propery_name = array(
+                                                'type' => 'text',
+                                                'name' => 'propery_name',
+                                                'id' => 'propery_name',
+                                                'class' => 'form-control',
+                                                'placeholder' => '',
+                                                'required' => 'required'
+                                            );
+                                            echo form_error('propery_name')
+                                            ?>
+                                            <?php echo form_input($propery_name) ?>	
+
                                         </div>
                                         <div class="form-group" style="margin-top: 30px; "> 
                                             <label>Value of the property</label><br>
-                                            <input type="text" style="width:40%;display: inline-block !important;" class="form-control" id="exampleInputPassword1" placeholder="currency...">
-                                            <input type="text" style="width:58%;display: inline-block !important;" class="form-control" id="exampleInputPassword1" placeholder="amount...">
+                                            <?php
+                                            echo form_dropdown('property_currency', $currency, '144', 'class="form-control" id="property_currency" style="width:40%;display: inline-block !important;"');
+                                            ?>
+                                            <?php
+                                            $propery_amount = array(
+                                                'type' => 'text',
+                                                'name' => 'propery_amount',
+                                                'id' => 'propery_amount',
+                                                'class' => 'form-control',
+                                                'placeholder' => 'amount...',
+                                                'style' => 'width:58%;display: inline-block !important;',
+                                                'required' => 'required'
+                                            );
+                                            echo form_error('propery_amount')
+                                            ?>
+                                            <?php echo form_input($propery_amount); ?>	
                                         </div> 
                                     </div>
                                     <div class="col-md-6">
 
                                         <div class="form-group">   
                                             <label>Address of the property</label>
-                                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder=""> 
+                                            <?php
+                                            $propery_address = array(
+                                                'type' => 'text',
+                                                'name' => 'propery_address',
+                                                'id' => 'propery_address',
+                                                'class' => 'form-control',
+                                                'placeholder' => '',
+                                                'required' => 'required'
+                                            );
+                                            echo form_error('propery_address')
+                                            ?>
+                                            <?php echo form_input($propery_address); ?>      
+
                                         </div>
+
                                         <div class="form-group" style="margin-top: 30px;">                                            
                                             <label>Date of purchase</label>
-                                            <input type="text" class="form-control" id="exampleInputPassword1" placeholder="DD/MM/YYYY">
+                                            <?php
+                                            $propery_pur_date = array(
+                                                'type' => 'text',
+                                                'name' => 'propery_pur_date',
+                                                'id' => 'propery_pur_date',
+                                                'class' => 'form-control',
+                                                'placeholder' => 'DD-MM-YYYY',
+                                                'required' => 'required'
+                                            );
+                                            echo form_error('propery_pur_date')
+                                            ?>
+                                            <?php echo form_input($propery_pur_date); ?> 
                                         </div> 
+
                                         <div class="form-group" style="margin-top: 30px;">                                            
-                                            <button type="submit" class="btn btn-info pull-right" style="padding-right: 30px; padding-left: 30px;">Submit</button>
+                                            <button type="submit" name="property_submit" class="btn btn-info pull-right" style="padding-right: 30px; padding-left: 30px;">Submit</button>
                                         </div>
                                     </div>                                                                                            
                                 </form>
+                                <p style="float:left;" id="prp_msg"></p>
                             </div>
                         </div>                                 
                     </div>                            
@@ -420,96 +535,96 @@
 
                             <div class="panel-body">
                                 <div class="col-md-12"><h1 style="padding-bottom:20px;">Add Loan</h1></div>
-								<form id="loan_form">
+                                <form id="loan_form">
                                     <div class="col-md-6">
                                         <div class="form-group">  
-											<label>Add loan account</label>
-											<?php
-											  if(!isset($institution_name_list)) {
-												  $institution_name_list = array(""=>"Please select account");
-											  }
-	                                           echo form_dropdown('loan_account', $institution_name_list, '','class="form-control" id="loan_account"');
-                                             ?>
+                                            <label>Add loan account</label>
+                                            <?php
+                                            if (!isset($institution_name_list)) {
+                                                $institution_name_list = array("" => "Please select account");
+                                            }
+                                            echo form_dropdown('loan_account', $institution_name_list, '', 'class="form-control" id="loan_account"');
+                                            ?>
                                         </div>
-                                        
+
                                         <div class="form-group" style="margin-top: 30px; "> 
-											<label>Loan outstanding amount</label><br>
-											
-											<?php
-											 echo form_dropdown('loan_currency', $currency, '144','class="form-control" id="loan_currency" style="width:40%;display: inline-block !important;"');
-										    ?>
-											 <?php
-												$loan_outstnd_amt = array(
-														'type' => 'text',
-														'name' => 'loan_outamt',
-														'id' => 'loan_outamt',
-														'class' => 'form-control',
-														'placeholder' => 'amount...',
-														'required' => 'required',
-														'style'=>'width:58%;display: inline-block !important;'
-													);
-												echo form_error('loan_outamt')
-											 ?>
-											 <?php echo form_input($loan_outstnd_amt) ?>	
-											
+                                            <label>Loan outstanding amount</label><br>
+
+                                            <?php
+                                            echo form_dropdown('loan_currency', $currency, '144', 'class="form-control" id="loan_currency" style="width:40%;display: inline-block !important;"');
+                                            ?>
+                                            <?php
+                                            $loan_outstnd_amt = array(
+                                                'type' => 'text',
+                                                'name' => 'loan_outamt',
+                                                'id' => 'loan_outamt',
+                                                'class' => 'form-control',
+                                                'placeholder' => 'amount...',
+                                                'required' => 'required',
+                                                'style' => 'width:58%;display: inline-block !important;'
+                                            );
+                                            echo form_error('loan_outamt')
+                                            ?>
+                                            <?php echo form_input($loan_outstnd_amt) ?>	
+
                                         </div> 
-										<div class="form-group" style="margin-top: 30px;">                                            
-											<label>Loan end date</label>
-										     <?php
-												$lastdate = array(
-														'type' => 'text',
-														'name' => 'end_date',
-														'id' => 'end_date',
-														'class' => 'form-control',
-														'placeholder' => 'DD-MM-YYYY',
-														'required' => 'required'
-													);
-												echo form_error('end_date')
-										     ?>
-								             <?php echo form_input($lastdate) ?>	
-										
+                                        <div class="form-group" style="margin-top: 30px;">                                            
+                                            <label>Loan end date</label>
+                                            <?php
+                                            $lastdate = array(
+                                                'type' => 'text',
+                                                'name' => 'end_date',
+                                                'id' => 'end_date',
+                                                'class' => 'form-control',
+                                                'placeholder' => 'DD-MM-YYYY',
+                                                'required' => 'required'
+                                            );
+                                            echo form_error('end_date')
+                                            ?>
+                                            <?php echo form_input($lastdate) ?>	
+
+                                        </div>
                                     </div>
-									</div>
                                     <div class="col-md-6">
                                         <div class="form-group">   
-											<label>Loan account number</label>
-										    <?php
-												$login_number = array(
-														'type' => 'text',
-														'name' => 'loan_acnumber',
-														'id' => 'loan_acnumber',
-														'class' => 'form-control',
-														'placeholder' => 'Loan Account Number',
-														'required' => 'required'
-													);
-												echo form_error('loan_acnumber')
-										?>
-								        <?php echo form_input($login_number) ?>		
-										
-										
+                                            <label>Loan account number</label>
+                                            <?php
+                                            $login_number = array(
+                                                'type' => 'text',
+                                                'name' => 'loan_acnumber',
+                                                'id' => 'loan_acnumber',
+                                                'class' => 'form-control',
+                                                'placeholder' => 'Loan Account Number',
+                                                'required' => 'required'
+                                            );
+                                            echo form_error('loan_acnumber')
+                                            ?>
+                                            <?php echo form_input($login_number) ?>		
+
+
                                         </div>
                                         <div class="form-group" style="margin-top: 30px;">                                            
-											<label>Loan start date</label>
-										     <?php
-												$loan_startdate = array(
-														'type' => 'text',
-														'name' => 'start_date',
-														'id' => 'start_date',
-														'class' => 'form-control',
-														'placeholder' => 'DD-MM-YYYY',
-														'required' => 'required'
-													);
-												echo form_error('start_date')
-										     ?>
-								            <?php echo form_input($loan_startdate) ?>	
-										
+                                            <label>Loan start date</label>
+                                            <?php
+                                            $loan_startdate = array(
+                                                'type' => 'text',
+                                                'name' => 'start_date',
+                                                'id' => 'start_date',
+                                                'class' => 'form-control',
+                                                'placeholder' => 'DD-MM-YYYY',
+                                                'required' => 'required'
+                                            );
+                                            echo form_error('start_date')
+                                            ?>
+                                            <?php echo form_input($loan_startdate) ?>	
+
                                         </div> 
                                         <div class="form-group" style="margin-top: 30px;">                                            
                                             <button type="submit" class="btn btn-info pull-right" style="padding-right: 30px; padding-left: 30px;">Submit</button>
                                         </div>
                                     </div>                                                                                            
                                 </form>
-							  <p style="float:left;" id="loan_id"></p>
+                                <p style="float:left;" id="loan_id"></p>
                             </div>
                         </div>                                 
                     </div>                            
@@ -527,7 +642,7 @@
 
         $('form#add_account').removeAttr('action');
         $('form#user_trans').removeAttr('action');
-		$('form#loan_form').removeAttr('action');
+        $('form#loan_form').removeAttr('action');
         $("form#add_account").submit(function (e) {
             //alert('jjj');
 
@@ -573,45 +688,105 @@
                 }
             });
         });
-		 $("form#loan_form").submit(function (e) {
-                  e.preventDefault();
-			      var loan_account = $('#loan_account').val();
-				  var loan_currency = $('#loan_currency').val();
-				  var loan_outamt = $('#loan_outamt').val();
-				  var end_date = $('#end_date').val();
-				  var loan_acnumber = $('#loan_acnumber').val();
-				  var start_date = $('#start_date').val();
-				  loan_vals(loan_account,loan_currency,loan_outamt,end_date,loan_acnumber,start_date);
-		})
+        $("form#loan_form").submit(function (e) {
+            e.preventDefault();
+            var loan_account = $('#loan_account').val();
+            var loan_currency = $('#loan_currency').val();
+            var loan_outamt = $('#loan_outamt').val();
+            var end_date = $('#end_date').val();
+            var loan_acnumber = $('#loan_acnumber').val();
+            var start_date = $('#start_date').val();
+            loan_vals(loan_account, loan_currency, loan_outamt, end_date, loan_acnumber, start_date);
+        });
+        $("form#poperty_frm").submit(function (e) {
+            e.preventDefault();
+            var propery_name = $('#propery_name').val();
+            var property_currency = $('#property_currency').val();
+            var propery_amount = $('#propery_amount').val();
+            var propery_address = $('#propery_address').val();
+            var propery_pur_date = $('#propery_pur_date').val();
+            property_vals(propery_name, property_currency, propery_amount, propery_address, propery_pur_date);
+        });
+
+        $("form#deposit_form").submit(function (e) {
+            e.preventDefault();
+            var deposit_account = $('#deposit_account').val();
+            var deposit_currency = $('#deposit_currency').val();
+            var deposit_amount = $('#deposit_amount').val();
+            var deposit_endate = $('#deposit_endate').val();
+            var deposit_acnumber = $('#deposit_acnumber').val();
+            var deposit_stdate = $('#deposit_stdate').val();
+            deposit_vals(deposit_account, deposit_currency, deposit_amount, deposit_endate, deposit_acnumber, deposit_stdate);
+        });
 
         // $('#datetimepicker_tran').datetimepicker();
     });
-	
-	
-	function loan_vals(loan_account,loan_currency,loan_outamt,end_date,loan_acnumber,start_date)
+
+    function deposit_vals(deposit_account, deposit_currency, deposit_amount, deposit_endate, deposit_acnumber, deposit_stdate)
     {
-       var str = "loan_account="+loan_account+"&loan_currency="+loan_currency+"&loan_outamt="+loan_outamt+"&end_date="+end_date+"&loan_acnumber="+loan_acnumber+"&start_date="+start_date;	 
-	   $.ajax
-		({
-		type: "POST",
-		url: "<?php echo base_url()."account/addLoan" ?>",
-		data: str,
-		cache: false,
-		success: function(html)
-		{
-		    $("#loan_id").html(html);
-		    $('#loan_account').val("");
-			//$('#loan_currency').val("");
-			$('#loan_outamt').val("");
-			$('#end_date').val("");
-			$('#loan_acnumber').val("");
-			$('#start_date').val("");
-		} 
-		});
+        var str = "deposit_account=" + deposit_account + "&deposit_currency=" + deposit_currency + "&deposit_amount=" + deposit_amount + "&deposit_endate=" + deposit_endate + "&deposit_acnumber=" + deposit_acnumber + "&deposit_stdate=" + deposit_stdate;
+        $.ajax
+                ({
+                    type: "POST",
+                    url: "<?php echo base_url() . "account/deposit_vals" ?>",
+                    data: str,
+                    cache: false,
+                    success: function (html)
+                    {
+                        $("#dep_msg").html(html);
+                        $("#deposit_amount").val("");
+                        $('#deposit_endate').val("");
+                        $('#deposit_acnumber').val("");
+                        $('#deposit_stdate').val("");
+                    }
+                });
     }
-	
-	
-	
+
+    function property_vals(propery_name, property_currency, propery_amount, propery_address, propery_pur_date)
+    {
+        var str = "propery_name=" + propery_name + "&property_currency=" + property_currency + "&propery_amount=" + propery_amount + "&propery_amount=" + propery_amount + "&propery_address=" + propery_address + "&propery_pur_date=" + propery_pur_date;
+        $.ajax
+                ({
+                    type: "POST",
+                    url: "<?php echo base_url() . "account/property_vals" ?>",
+                    data: str,
+                    cache: false,
+                    success: function (html)
+                    {
+                        $("#prp_msg").html(html);
+                        $("#propery_name").val("");
+                        $('#propery_amount').val("");
+                        $('#propery_address').val("");
+                        $('#propery_pur_date').val("");
+                    }
+                });
+    }
+
+
+    function loan_vals(loan_account, loan_currency, loan_outamt, end_date, loan_acnumber, start_date)
+    {
+        var str = "loan_account=" + loan_account + "&loan_currency=" + loan_currency + "&loan_outamt=" + loan_outamt + "&end_date=" + end_date + "&loan_acnumber=" + loan_acnumber + "&start_date=" + start_date;
+        $.ajax
+                ({
+                    type: "POST",
+                    url: "<?php echo base_url() . "account/addLoan" ?>",
+                    data: str,
+                    cache: false,
+                    success: function (html)
+                    {
+                        $("#loan_id").html(html);
+                        $('#loan_account').val("");
+                        //$('#loan_currency').val("");
+                        $('#loan_outamt').val("");
+                        $('#end_date').val("");
+                        $('#loan_acnumber').val("");
+                        $('#start_date').val("");
+                    }
+                });
+    }
+
+
+
     function add_account_vals(type_of_account, institution_name, bank_id, bank_password)
     {
         var str = "type_of_account=" + type_of_account + "&institution_name=" + institution_name + "&bank_id=" + bank_id + "&bank_password=" + bank_password
