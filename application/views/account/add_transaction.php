@@ -1,4 +1,3 @@
-
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -185,6 +184,24 @@
                                                         <?php echo form_input($account_amount) ?>
                                                         <!--<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">-->
                                                     </div> 
+                                                    
+                                                    <div class="form-group" style="margin-top: 30px;">  
+                                                        <?php
+                                                        $trans_desc = array(
+                                                            'type' => 'text',
+                                                            'name' => 'trans_desc',
+                                                            'id' => 'trans_desc',
+                                                            'class' => 'form-control',
+                                                            'placeholder' => 'Description',
+                                                            'required' => 'required',
+                                                            'value' => '',
+                                                            'maxlenght' => 50,
+                                                        );
+                                                        echo form_error('trans_desc')
+                                                        ?>
+                                                        <?php echo form_input($trans_desc) ?>
+                                                        <!--<input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">-->
+                                                    </div> 
 
                                                     <div class="form-group" style="margin-top: 30px;">                                            
                                                         <input type="submit" id="trans_submit" value="Add Transaction" class="btn btn-info pull-right" style="padding-right: 30px; padding-left: 30px;">
@@ -197,6 +214,7 @@
 
                                                     $(document.body).delegate('.tran_type', 'change', function () {
                                                         //alert('The option with value ' + $(this).val());
+                                                        //alert($(this).val());
                                                         $.ajax({
                                                             type: "POST",
                                                             url: "<?php echo site_url() . "/account/name_institution_for_add_transaction" ?>",

@@ -13,6 +13,9 @@
                         <div class="panel panel-white" style="padding-top:15px; padding-bottom: 60px;">
                             <div class="panel-body">
                                 <div class="col-md-12"><h1 style="padding-bottom:20px;">Add Property</h1></div>
+                                <div class="col-md-12">
+                                        <p style="float:left;" id="prp_msg"></p>
+                                        </div>
                                 <form id="poperty_frm">
                                     <div class="col-md-6">
                                         <div class="form-group">  
@@ -52,7 +55,7 @@
                                         </div> 
                                     </div>
                                     <div class="col-md-6">
-
+                                        
                                         <div class="form-group">   
                                             <label>Address of the property</label>
                                             <?php
@@ -91,7 +94,7 @@
                                         </div>
                                     </div>                                                                                            
                                 </form>
-                                <p style="float:left;" id="prp_msg"></p>
+                                
                             </div>
                         </div>                                 
                     </div>                            

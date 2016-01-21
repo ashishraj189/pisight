@@ -13,7 +13,8 @@
                     <div class="col-md-12">
                         <div class="panel panel-white" style="padding-top:15px; padding-bottom: 60px;">
                             <div class="panel-body">
-                                <div class="col-md-12"><h1 style="padding-bottom:20px;">Add Deposit</h1></div>
+                                <div class="col-md-12"><h1 style="padding-bottom:20px;">Add Deposit</h1>
+                                <p style="float:left;" id="dep_msg"></p></div>
                                 <form id="deposit_form">
                                     <div class="col-md-6">
                                         <div class="form-group">  
@@ -98,7 +99,7 @@
                                         </div>
                                     </div>                                                                                            
                                 </form>
-                                <p style="float:left;" id="dep_msg"></p>
+                                
                             </div>
                         </div>                                 
                     </div>                            

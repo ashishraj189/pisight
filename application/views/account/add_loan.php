@@ -13,7 +13,8 @@
                         <div class="panel panel-white" style="padding-top:15px; padding-bottom: 60px;">
 
                             <div class="panel-body">
-                                <div class="col-md-12"><h1 style="padding-bottom:20px;">Add Loan</h1></div>
+                                <div class="col-md-12"><h1 style="padding-bottom:20px;">Add Loan</h1>
+                                <p style="float:left;" id="loan_id"></p></div>
                                 <form id="loan_form">
                                     <div class="col-md-6">
                                         <div class="form-group">  
@@ -103,7 +104,7 @@
                                         </div>
                                     </div>                                                                                            
                                 </form>
-                                <p style="float:left;" id="loan_id"></p>
+                                
                             </div>
                         </div>                                 
                     </div>                            

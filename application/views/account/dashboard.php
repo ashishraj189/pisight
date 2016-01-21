@@ -21,10 +21,7 @@
     </div>
     <div class="row">   
         <?php
-        $val = array();
-        $val["loan_dis_val"] = $loan_display;
-        $val["deposit_display"] = $deposit_display;
-        $this->load->view('common/left_accordian', $val);
+        $this->load->view('common/left_accordian');
         ?>
         <div class="col-md-9">
             <h1>TREND</h1>
@@ -77,10 +74,10 @@
         </div>                                               
     </div><!-- Row -->
 </div><!-- Main Wrapper -->
-
-
-<?php echo $this->load->view('account/add_transaction');?>
-<?php echo $this->load->view('account/add_deposit');?>
-<?php echo $this->load->view('account/add_property');?>
-<?php echo $this->load->view('account/add_loan');?>
-<?php echo $this->load->view('common/dashboard_script');?>
+<?php
+echo $add_transaction_view;
+echo $add_deposit_view;
+echo $add_property_view;
+echo $add_loan_view;
+echo $add_dashboard_script_view;
+?>

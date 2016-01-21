@@ -276,8 +276,10 @@
         </div>
     </div>
 </div>
-<?php echo $this->load->view('account/add_transaction');?>
-<?php echo $this->load->view('account/add_deposit');?>
-<?php echo $this->load->view('account/add_property');?>
-<?php echo $this->load->view('account/add_loan');?>
-<?php echo $this->load->view('common/dashboard_script');?>
+<?php
+echo $add_transaction_view;
+echo $add_deposit_view;
+echo $add_property_view;
+echo $add_loan_view;
+echo $add_dashboard_script_view;
+?>

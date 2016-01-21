@@ -1,5 +1,4 @@
 <div class="col-md-3">
-
     <div class="panel-heading clearfix">
         <h3 class="panel-title">Accordion</h3>
     </div>
@@ -10,6 +9,7 @@
                     <h4 class="panel-title">
                         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                             <img src="<?php echo base_url(); ?>assets/images/bank.png" alt=""> <span style="margin-left:40px;">Bank</span>
+                           <?php echo $bank_sum; ?>
                         </a>
                     </h4>
                 </div>
@@ -26,6 +26,7 @@
                     <h4 class="panel-title">
                         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapsetwo" aria-expanded="false" aria-controls="collapsetwo">
                             <img src="<?php echo base_url(); ?>assets/images/creditcards.png" alt=""> <span style="margin-left:40px;">Credit Cards</span>
+                            <?php echo $credit_sum; ?>
                         </a>
                     </h4>
                 </div>
@@ -42,28 +43,16 @@
                             <img src="<?php echo base_url(); ?>assets/images/Loans.png" alt=""> 
                             <span style="margin-left:40px;">Loan</span>
                             <?php
-                            $cur_sum = 0;
-                            if (sizeof($loan_dis_val) > 0) {
-                                foreach ($loan_dis_val as $loan_key => $loan_dis) {
-                                    $cur_sum += $loan_dis->loan_amount;
-                                    $currency = $loan_dis->currency_type;
-                                }
-                                echo '<span>' . $currency . ' ' . $cur_sum . '</span>';
-                            }
-                            ?>
+                            echo $loan_sum;                            ?>
                         </a>
                         <a href="#" class="pull-right glink" data-toggle="modal" data-target="#add_loan">Add</a>
                     </h4>
                 </div>
                 <div style="height: 0px;" aria-expanded="false" id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
                     <div class="panel-body">
-<?php
-if (sizeof($loan_dis_val) > 0) {
-    foreach ($loan_dis_val as $loan_key => $loan_dis) {
-        echo '<div class="sc">' . $loan_dis->account_name . ' ' . $loan_dis->currency_type . ' ' . $loan_dis->loan_amount . '</div>';
-    }
-}
-?>  
+                        <?php
+                        echo $loan_list;
+                        ?>  
                     </div>
                 </div>
             </div>
@@ -107,16 +96,9 @@ if (sizeof($loan_dis_val) > 0) {
                     <h4 class="panel-title">
                         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapsesix" aria-expanded="false" aria-controls="collapseOne">
                             <img src="<?php echo base_url(); ?>assets/images/deposit.png" alt=""> <span style="margin-left:40px;">Deposit</span>
-<?php
-$dep_sum = 0;
-if (sizeof($deposit_display) > 0) {
-    foreach ($deposit_display as $dep_key => $dep_dis) {
-        $dep_sum += $dep_dis->deposit_amount;
-        $dep_currency = $dep_dis->currency_type;
-    }
-    echo '<span>' . $dep_currency . ' ' . $dep_sum . '</span>';
-}
-?>
+                            <?php
+                            echo $deposit_sum; 
+                            ?>
                         </a>
 
                         <a href="#" class="pull-right glink" data-toggle="modal" data-target="#add_deposit">Add</a>
@@ -124,13 +106,8 @@ if (sizeof($deposit_display) > 0) {
                 </div>
                 <div style="height: 0px;" aria-expanded="false" id="collapsesix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                     <div class="panel-body">
-<?php
-if (sizeof($deposit_display) > 0) {
-    foreach ($deposit_display as $dep_key => $dep_dis) {
-        echo '<div class="sc">' . $dep_dis->account_name . ' ' . $dep_dis->currency_type . ' ' . $dep_dis->deposit_amount . '</div>';
-    }
-}
-?>  
+                        <?php echo $deposit_list;
+                        ?>  
                     </div>
                 </div>
             </div>

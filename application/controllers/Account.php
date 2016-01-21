@@ -31,19 +31,29 @@ class Account extends CI_Controller {
 
         $val['category_list'] = $this->account_model->get_all_category_list();
 
-        $user_selectvals = $this->account_model->get_UserSelecteAcoount($loginId);
+        $account_lists = $this->account_model->get_UserSelecteAcoount($loginId);
         $val['accounts_list_bank'] = '';
         $val['accounts_list_credit'] = '';
-        if (sizeof($user_selectvals) > 0) {
-            foreach ($user_selectvals as $selkey => $selvals) {
+        $bank_sum = 0;
+        $credit_sum = 0;
+        $val['bank_sum'] = '';
+        $val['credit_sum'] = '';
+        if (sizeof($account_lists) > 0) {
+            foreach ($account_lists as $selkey => $selvals) {
                 if ($selvals->account_type == 'Saving' || $selvals->account_type == 'Current') {
-                    $val['accounts_list_bank'] .= '<a href="' . site_url('account/transaction/' . $selvals->account_id) . '"><div class="sc" id="account_' . $selvals->account_id . '">' . $selvals->account_name . ' ' . $selvals->account_balance . '</div></a>';
+                    $val['accounts_list_bank'] .= '<a href="' . site_url('account/transaction/' . $selvals->account_id) . '">'
+                            . '<div class="sc" id="account_' . $selvals->account_id . '">' . $selvals->account_name . ' ' . $selvals->account_balance . '</div>'
+                            . '</a>';
+                    $bank_sum += $selvals->account_balance;
                 }
 
                 if ($selvals->account_type == 'Credit') {
                     $val['accounts_list_credit'] .= '<a href="' . site_url('account/transaction/' . $selvals->account_id) . '"><div class="sc" id="account_' . $selvals->account_id . '">' . $selvals->account_name . ' ' . $selvals->account_balance . '</div></a>';
+                    $credit_sum += $selvals->account_balance;
                 }
             }
+            $val['bank_sum'] = '<span>' . $bank_sum . '</span>';
+            $val['credit_sum'] = '<span>' . $credit_sum . '</span>';;
         }
         /* Found User Account List Behalf Of Login Id */
         $user_id = $logged_in['user_id'];
@@ -51,14 +61,48 @@ class Account extends CI_Controller {
         $val['currency'] = $this->account_model->get_Currency();
         /* End Here */
         /* code for display loan amount and loan account */
-        $val['loan_display'] = $this->account_model->loan_account_name($user_id);
+        $loan_display = $this->account_model->loan_account_name($user_id);
+        $cur_sum = 0;
+        $val['loan_sum'] = '';
+        $val['loan_list'] = '';
+        $currency = '';
+        if (!empty($loan_display)) {
+            foreach ($loan_display as $loan_dis) {
+                $cur_sum += $loan_dis->loan_amount;
+                $currency = $loan_dis->currency_type;
+
+                $val['loan_list'] .= '<div class="sc">' . $loan_dis->account_name . ' ' . $loan_dis->currency_type . ' ' . $loan_dis->loan_amount . '</div>';
+            }
+            $val['loan_sum'] .= '<span>' . $currency . ' ' . $cur_sum . '</span>';
+        }
+
         /* End here */
         /* code for display loan amount and loan account */
-        $val['deposit_display'] = $this->account_model->deposit_account_name($user_id);
+        $deposit_display = $this->account_model->deposit_account_name($user_id);
+        $dep_sum = 0;
+        $val['deposit_sum'] = '';
+        $val['deposit_list'] = '';
+        $dep_currency = '';
+        if (!empty($deposit_display)) {
+            foreach ($deposit_display as $deposit_dis) {
+                $dep_sum += $deposit_dis->loan_amount;
+                $dep_currency = $deposit_dis->currency_type;
+
+                $val['deposit_list'] .= '<div class="sc">' . $deposit_dis->account_name . ' ' . $deposit_dis->currency_type . ' ' . $deposit_dis->loan_amount . '</div>';
+            }
+            $val['deposit_sum'] .= '<span>' . $dep_currency . ' ' . $dep_sum . '</span>';
+        }
         /* End here */
+
+        $val['add_transaction_view'] = $this->load->view('account/add_transaction', $val, TRUE);
+        $val['add_deposit_view'] = $this->load->view('account/add_deposit', $val, TRUE);
+        $val['add_property_view'] = $this->load->view('account/add_property', $val, TRUE);
+        $val['add_loan_view'] = $this->load->view('account/add_loan', $val, TRUE);
+        $val['add_dashboard_script_view'] = $this->load->view('common/dashboard_script', $val, TRUE);
 
         $this->load->view('common/header');
         $this->load->view('account/dashboard', $val);
+
         $this->load->view('common/footer');
     }
 
@@ -117,6 +161,7 @@ class Account extends CI_Controller {
         $institution_id = $input["institution_id"];
         $category = $input["category"];
         $catamt = $input["catamt"];
+        $trans_desc = $input["trans_desc"];
         $userdefinedate = date('Y-m-d', strtotime($input["date"]));
         $create_date = date('Y-m-d h:i:s', time());
         $logged_in = $this->session->userdata('logged_in');
@@ -127,6 +172,7 @@ class Account extends CI_Controller {
             'transaction_amount' => $catamt,
             //'category_val' => $category,
             'transaction_date' => $userdefinedate,
+            'transaction_desc' => $trans_desc,
             'transaction_created_at' => $create_date
         );
         $chk_accinfo = $this->account_model->get_account_detail_by_account_id($institution_id);
@@ -169,24 +215,75 @@ class Account extends CI_Controller {
 
         $data['category_list'] = $this->account_model->get_all_category_list();
 
-        $user_selectvals = $this->account_model->get_UserSelecteAcoount($loginId);
+        $account_lists = $this->account_model->get_UserSelecteAcoount($loginId);
         $data['accounts_list_bank'] = '';
         $data['accounts_list_credit'] = '';
-        if (sizeof($user_selectvals) > 0) {
-            foreach ($user_selectvals as $selkey => $selvals) {
+        $bank_sum = 0;
+        $credit_sum = 0;
+        $data['bank_sum'] = '';
+        $data['credit_sum'] = '';
+        if (sizeof($account_lists) > 0) {
+            foreach ($account_lists as $selkey => $selvals) {
                 if ($selvals->account_type == 'Saving' || $selvals->account_type == 'Current') {
-                    $data['accounts_list_bank'] .= '<a href="' . site_url('account/transaction/' . $selvals->account_id) . '"><div class="sc" id="account_' . $selvals->account_id . '">'
-                            . $selvals->account_name . ' ' . $selvals->account_balance .
-                            '</div></a>';
+                    $data['accounts_list_bank'] .= '<a href="' . site_url('account/transaction/' . $selvals->account_id) . '">'
+                            . '<div class="sc" id="account_' . $selvals->account_id . '">' . $selvals->account_name . ' ' . $selvals->account_balance . '</div>'
+                            . '</a>';
+                    $bank_sum += $selvals->account_balance;
                 }
 
                 if ($selvals->account_type == 'Credit') {
-                    $data['accounts_list_credit'] .= '<a href="' . site_url('account/transaction/' . $selvals->account_id) . '"><div class="sc" id="account_' . $selvals->account_id . '">'
-                            . $selvals->account_name . ' ' . $selvals->account_balance .
-                            '</div></a>';
+                    $data['accounts_list_credit'] .= '<a href="' . site_url('account/transaction/' . $selvals->account_id) . '"><div class="sc" id="account_' . $selvals->account_id . '">' . $selvals->account_name . ' ' . $selvals->account_balance . '</div></a>';
+                    $credit_sum += $selvals->account_balance;
                 }
             }
+            $data['bank_sum'] = '<span>' . $bank_sum . '</span>';
+            $data['credit_sum'] = '<span>' . $credit_sum . '</span>';;
         }
+        /* Found User Account List Behalf Of Login Id */
+        $user_id = $logged_in['user_id'];
+        $data['institution_name_list'] = $this->account_model->get_institution_list_for_add_transaction("", $user_id);
+        $data['currency'] = $this->account_model->get_Currency();
+        /* End Here */
+        /* code for display loan amount and loan account */
+        $loan_display = $this->account_model->loan_account_name($user_id);
+        $cur_sum = 0;
+        $data['loan_sum'] = '';
+        $data['loan_list'] = '';
+        $currency = '';
+        if (!empty($loan_display)) {
+            foreach ($loan_display as $loan_dis) {
+                $cur_sum += $loan_dis->loan_amount;
+                $currency = $loan_dis->currency_type;
+
+                $data['loan_list'] .= '<div class="sc">' . $loan_dis->account_name . ' ' . $loan_dis->currency_type . ' ' . $loan_dis->loan_amount . '</div>';
+            }
+            $data['loan_sum'] .= '<span>' . $currency . ' ' . $cur_sum . '</span>';
+        }
+
+        /* End here */
+        /* code for display loan amount and loan account */
+        $deposit_display = $this->account_model->deposit_account_name($user_id);
+        $dep_sum = 0;
+        $data['deposit_sum'] = '';
+        $data['deposit_list'] = '';
+        $dep_currency = '';
+        if (!empty($deposit_display)) {
+            foreach ($deposit_display as $deposit_dis) {
+                $dep_sum += $deposit_dis->loan_amount;
+                $dep_currency = $deposit_dis->currency_type;
+
+                $data['deposit_list'] .= '<div class="sc">' . $deposit_dis->account_name . ' ' . $deposit_dis->currency_type . ' ' . $deposit_dis->loan_amount . '</div>';
+            }
+            $data['deposit_sum'] .= '<span>' . $dep_currency . ' ' . $dep_sum . '</span>';
+        }
+        /* End here */
+
+        $data['add_transaction_view'] = $this->load->view('account/add_transaction', $data, TRUE);
+        $data['add_deposit_view'] = $this->load->view('account/add_deposit', $data, TRUE);
+        $data['add_property_view'] = $this->load->view('account/add_property', $data, TRUE);
+        $data['add_loan_view'] = $this->load->view('account/add_loan', $data, TRUE);
+        $data['add_dashboard_script_view'] = $this->load->view('common/dashboard_script', $data, TRUE);
+        
         $account_transaction_detail = array();
         $data['account_bal'] = '';
         $data['transaction_rows'] = '';
@@ -200,7 +297,7 @@ class Account extends CI_Controller {
                 //print_r($account_transaction_detail);
                 foreach ($account_transaction_detail as $account_transaction_row) {
                     $data['transaction_rows'] .= "<tr> <td>$account_transaction_row->transaction_date</td>
-                                                        <td>??</td>
+                                                        <td>$account_transaction_row->transaction_desc</td>
                                                         <td>$account_transaction_row->category_name</td>
                                                         <td>$account_transaction_row->transaction_amount</td>
                                                    </tr>";
@@ -224,7 +321,7 @@ class Account extends CI_Controller {
         $user_id = $logged_in['user_id'];
         $account_type = $this->input->post('account_type');
         if ($account_type != '') {
-            $institution_name_list = $this->account_model->get_institution_list_for_add_transaction($account_type = 'Credit', $user_id);
+            $institution_name_list = $this->account_model->get_institution_list_for_add_transaction($account_type , $user_id);
             echo form_dropdown('trans_account', $institution_name_list, '', 'class="form-control" id="trans_account"');
         }
     }

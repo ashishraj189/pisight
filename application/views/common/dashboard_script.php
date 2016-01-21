@@ -29,6 +29,7 @@
             var category = $('#tran_category').val();
             var catamt = $('#catamt').val();
             var date = $('#date').val();
+            var trans_desc = $('#trans_desc').val(); 
             //var bank_id = $('#bankId').val();
             //var bank_pwd = $('#bank_pwd').val();
             /*if(type_of_account == "" && institution_name == "" && category == "" && catamt == "" && date=="")
@@ -36,7 +37,7 @@
              alert("Please fill all details");
              return false;
              }*/
-            addtransaction_vals(type_of_account, institution_id, category, catamt, date);
+            addtransaction_vals(type_of_account, institution_id, category, catamt, date, trans_desc);
         });
 
         $('#auto_refresh').click(function () {
@@ -169,9 +170,10 @@
         });
     }
 
-    function addtransaction_vals(type_of_account, institution_id, category, catamt, date)
+    function addtransaction_vals(type_of_account, institution_id, category, catamt, date, trans_desc)
     {
-        var str = "type_of_account=" + type_of_account + "&institution_id=" + institution_id + "&category=" + category + "&catamt=" + catamt + "&date=" + date;
+        var str = "type_of_account=" + type_of_account + "&institution_id=" + institution_id + "&category=" + category + "&catamt=" + catamt 
+                + "&date=" + date + "&trans_desc =" + trans_desc;
         $.ajax
                 ({
                     type: "POST",
@@ -187,6 +189,7 @@
                         $('#tran_category').val("");
                         $('#catamt').val("");
                         $('#datetimepicker_tran').val("");
+                        $('#trans_desc').val("");
                     }
                 });
     }
