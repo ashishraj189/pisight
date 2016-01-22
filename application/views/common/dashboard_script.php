@@ -92,7 +92,7 @@
         $.ajax
                 ({
                     type: "POST",
-                    url: "<?php echo base_url() . "account/deposit_vals" ?>",
+                    url: "<?php echo site_url() . "/account/deposit_vals" ?>",
                     data: str,
                     cache: false,
                     success: function (html)
@@ -112,7 +112,7 @@
         $.ajax
                 ({
                     type: "POST",
-                    url: "<?php echo base_url() . "account/property_vals" ?>",
+                    url: "<?php echo site_url() . "/account/property_vals" ?>",
                     data: str,
                     cache: false,
                     success: function (html)
@@ -133,7 +133,7 @@
         $.ajax
                 ({
                     type: "POST",
-                    url: "<?php echo base_url() . "account/addLoan" ?>",
+                    url: "<?php echo site_url() . "/account/addLoan" ?>",
                     data: str,
                     cache: false,
                     success: function (html)

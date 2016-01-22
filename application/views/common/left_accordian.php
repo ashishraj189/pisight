@@ -9,7 +9,7 @@
                     <h4 class="panel-title">
                         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                             <img src="<?php echo base_url(); ?>assets/images/bank.png" alt=""> <span style="margin-left:40px;">Bank</span>
-                           <?php echo $bank_sum; ?>
+                           <?php echo '$'.$bank_sum; ?>
                         </a>
                     </h4>
                 </div>
@@ -26,7 +26,7 @@
                     <h4 class="panel-title">
                         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapsetwo" aria-expanded="false" aria-controls="collapsetwo">
                             <img src="<?php echo base_url(); ?>assets/images/creditcards.png" alt=""> <span style="margin-left:40px;">Credit Cards</span>
-                            <?php echo $credit_sum; ?>
+                            <?php echo '$'.$credit_sum; ?>
                         </a>
                     </h4>
                 </div>

@@ -42,13 +42,13 @@ class Account extends CI_Controller {
             foreach ($account_lists as $selkey => $selvals) {
                 if ($selvals->account_type == 'Saving' || $selvals->account_type == 'Current') {
                     $val['accounts_list_bank'] .= '<a href="' . site_url('account/transaction/' . $selvals->account_id) . '">'
-                            . '<div class="sc" id="account_' . $selvals->account_id . '">' . $selvals->account_name . ' ' . $selvals->account_balance . '</div>'
+                            . '<div class="sc" id="account_' . $selvals->account_id . '">' . $selvals->account_name . ' $' . $selvals->account_balance . '</div>'
                             . '</a>';
                     $bank_sum += $selvals->account_balance;
                 }
 
                 if ($selvals->account_type == 'Credit') {
-                    $val['accounts_list_credit'] .= '<a href="' . site_url('account/transaction/' . $selvals->account_id) . '"><div class="sc" id="account_' . $selvals->account_id . '">' . $selvals->account_name . ' ' . $selvals->account_balance . '</div></a>';
+                    $val['accounts_list_credit'] .= '<a href="' . site_url('account/transaction/' . $selvals->account_id) . '"><div class="sc" id="account_' . $selvals->account_id . '">' . $selvals->account_name . ' $' . $selvals->account_balance . '</div></a>';
                     $credit_sum += $selvals->account_balance;
                 }
             }
@@ -85,10 +85,10 @@ class Account extends CI_Controller {
         $dep_currency = '';
         if (!empty($deposit_display)) {
             foreach ($deposit_display as $deposit_dis) {
-                $dep_sum += $deposit_dis->loan_amount;
+                $dep_sum += $deposit_dis->deposit_amount;
                 $dep_currency = $deposit_dis->currency_type;
 
-                $val['deposit_list'] .= '<div class="sc">' . $deposit_dis->account_name . ' ' . $deposit_dis->currency_type . ' ' . $deposit_dis->loan_amount . '</div>';
+                $val['deposit_list'] .= '<div class="sc">' . $deposit_dis->account_name . ' ' . $deposit_dis->currency_type . ' ' . $deposit_dis->deposit_amount . '</div>';
             }
             $val['deposit_sum'] .= '<span>' . $dep_currency . ' ' . $dep_sum . '</span>';
         }
@@ -102,10 +102,10 @@ class Account extends CI_Controller {
         $property_currency = '';
         if (!empty($property_display)) {
             foreach ($property_display as $property_dis) {
-                $property_sum += $property_dis->loan_amount;
+                $property_sum += $property_dis->property_amount;
                 $property_currency = $property_dis->currency_type;
 
-                $val['property_list'] .= '<div class="sc">' . $property_dis->account_name . ' ' . $property_dis->currency_type . ' ' . $property_dis->loan_amount . '</div>';
+                $val['property_list'] .= '<div class="sc">' . $property_dis->property_name . ' ' . $property_dis->currency_type . ' ' . $property_dis->property_amount . '</div>';
             }
             $val['property_sum'] .= '<span>' . $property_currency . ' ' . $property_sum . '</span>';
         }
@@ -393,7 +393,7 @@ class Account extends CI_Controller {
             'property_user_id' => $user_id,
             'property_name' => $propery_name,
             'property_address' => $propery_address,
-            'property_currency' => $property_currency,
+            'property_currency_id' => $property_currency,
             'property_amount' => $propery_amount,
             'property_purchage_date' => $propery_pur_date,
             'property_added_at' => $date,
