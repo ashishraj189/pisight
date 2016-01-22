@@ -77,7 +77,7 @@ class Account extends CI_Controller {
         }
 
         /* End here */
-        /* code for display loan amount and loan account */
+        /* code for display depoite amount and deposite account */
         $deposit_display = $this->account_model->deposit_account_name($user_id);
         $dep_sum = 0;
         $val['deposit_sum'] = '';
@@ -91,6 +91,23 @@ class Account extends CI_Controller {
                 $val['deposit_list'] .= '<div class="sc">' . $deposit_dis->account_name . ' ' . $deposit_dis->currency_type . ' ' . $deposit_dis->loan_amount . '</div>';
             }
             $val['deposit_sum'] .= '<span>' . $dep_currency . ' ' . $dep_sum . '</span>';
+        }
+        /* End here */
+        
+        /* code for property amount and property account */
+        $property_display = $this->account_model->property_details($user_id);
+        $property_sum = 0;
+        $val['property_sum'] = '';
+        $val['property_list'] = '';
+        $property_currency = '';
+        if (!empty($property_display)) {
+            foreach ($property_display as $property_dis) {
+                $property_sum += $property_dis->loan_amount;
+                $property_currency = $property_dis->currency_type;
+
+                $val['property_list'] .= '<div class="sc">' . $property_dis->account_name . ' ' . $property_dis->currency_type . ' ' . $property_dis->loan_amount . '</div>';
+            }
+            $val['property_sum'] .= '<span>' . $property_currency . ' ' . $property_sum . '</span>';
         }
         /* End here */
 

@@ -77,7 +77,8 @@
                 <div class="panel-heading" role="tab" id="headingfive">
                     <h4 class="panel-title">
                         <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapsefive" aria-expanded="false" aria-controls="collapseOne">
-                            <img src="<?php echo base_url(); ?>assets/images/property.png" alt=""> <span style="margin-left:40px;">Property <span>$907.91</span></span></a>
+                            <img src="<?php echo base_url(); ?>assets/images/property.png" alt=""> <span style="margin-left:40px;">Property 
+                            <?php echo $property_sum;?></span></a>
 
                         <a href="#" class="pull-right glink" data-toggle="modal" data-target="#add_property">Add</a>
 
@@ -85,8 +86,7 @@
                 </div>
                 <div style="height: 0px;" aria-expanded="false" id="collapsefive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
                     <div class="panel-body">
-                        <div class="sc">HSBC $455.44</div>
-                        <div class="sc">HSBC $455.44</div>
+                        <?php echo $property_list;?>
                     </div>
                 </div>
             </div>

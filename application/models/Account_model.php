@@ -208,5 +208,21 @@ class Account_model extends CI_Model {
             return false;
         }
     }
+    
+     /* Getting property bank name,bank amount,and currency from property table */
+
+    function property_details($user_id) {
+        $this->db->select('currency.currency_code as currency_type,property.property_amount as property_amount');
+        $this->db->from('property');
+        $this->db->join('currency', 'property.property_currency_id = currency.currency_id');
+        $this->db->where('property.property_user_id', $user_id);
+        $this->db->order_by("property.property_added_at", "asc");
+        $query = $this->db->get();
+        if ($query->num_rows() > 0) {
+            return $query->result();
+        } else {
+            return false;
+        }
+    }
 
 }
