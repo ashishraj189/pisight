@@ -38,7 +38,7 @@ class Account extends CI_Controller {
         $credit_sum = 0;
         $val['bank_sum'] = '';
         $val['credit_sum'] = '';
-        if (sizeof($account_lists) > 0) {
+        if (!empty($account_lists)) {
             foreach ($account_lists as $selkey => $selvals) {
                 if ($selvals->account_type == 'Saving' || $selvals->account_type == 'Current') {
                     $val['accounts_list_bank'] .= '<a href="' . site_url('account/transaction/' . $selvals->account_id) . '">'
@@ -53,7 +53,8 @@ class Account extends CI_Controller {
                 }
             }
             $val['bank_sum'] = '<span>' . $bank_sum . '</span>';
-            $val['credit_sum'] = '<span>' . $credit_sum . '</span>';;
+            $val['credit_sum'] = '<span>' . $credit_sum . '</span>';
+            ;
         }
         /* Found User Account List Behalf Of Login Id */
         $user_id = $logged_in['user_id'];
@@ -93,7 +94,7 @@ class Account extends CI_Controller {
             $val['deposit_sum'] .= '<span>' . $dep_currency . ' ' . $dep_sum . '</span>';
         }
         /* End here */
-        
+
         /* code for property amount and property account */
         $property_display = $this->account_model->property_details($user_id);
         $property_sum = 0;
@@ -239,22 +240,23 @@ class Account extends CI_Controller {
         $credit_sum = 0;
         $data['bank_sum'] = '';
         $data['credit_sum'] = '';
-        if (sizeof($account_lists) > 0) {
+        if (!empty($account_lists)) {
             foreach ($account_lists as $selkey => $selvals) {
                 if ($selvals->account_type == 'Saving' || $selvals->account_type == 'Current') {
                     $data['accounts_list_bank'] .= '<a href="' . site_url('account/transaction/' . $selvals->account_id) . '">'
-                            . '<div class="sc" id="account_' . $selvals->account_id . '">' . $selvals->account_name . ' ' . $selvals->account_balance . '</div>'
+                            . '<div class="sc" id="account_' . $selvals->account_id . '">' . $selvals->account_name . ' $' . $selvals->account_balance . '</div>'
                             . '</a>';
                     $bank_sum += $selvals->account_balance;
                 }
 
                 if ($selvals->account_type == 'Credit') {
-                    $data['accounts_list_credit'] .= '<a href="' . site_url('account/transaction/' . $selvals->account_id) . '"><div class="sc" id="account_' . $selvals->account_id . '">' . $selvals->account_name . ' ' . $selvals->account_balance . '</div></a>';
+                    $data['accounts_list_credit'] .= '<a href="' . site_url('account/transaction/' . $selvals->account_id) . '"><div class="sc" id="account_' . $selvals->account_id . '">' . $selvals->account_name . ' $' . $selvals->account_balance . '</div></a>';
                     $credit_sum += $selvals->account_balance;
                 }
             }
             $data['bank_sum'] = '<span>' . $bank_sum . '</span>';
-            $data['credit_sum'] = '<span>' . $credit_sum . '</span>';;
+            $data['credit_sum'] = '<span>' . $credit_sum . '</span>';
+            ;
         }
         /* Found User Account List Behalf Of Login Id */
         $user_id = $logged_in['user_id'];
@@ -278,7 +280,7 @@ class Account extends CI_Controller {
         }
 
         /* End here */
-        /* code for display loan amount and loan account */
+        /* code for display depoite amount and deposite account */
         $deposit_display = $this->account_model->deposit_account_name($user_id);
         $dep_sum = 0;
         $data['deposit_sum'] = '';
@@ -286,12 +288,29 @@ class Account extends CI_Controller {
         $dep_currency = '';
         if (!empty($deposit_display)) {
             foreach ($deposit_display as $deposit_dis) {
-                $dep_sum += $deposit_dis->loan_amount;
+                $dep_sum += $deposit_dis->deposit_amount;
                 $dep_currency = $deposit_dis->currency_type;
 
-                $data['deposit_list'] .= '<div class="sc">' . $deposit_dis->account_name . ' ' . $deposit_dis->currency_type . ' ' . $deposit_dis->loan_amount . '</div>';
+                $data['deposit_list'] .= '<div class="sc">' . $deposit_dis->account_name . ' ' . $deposit_dis->currency_type . ' ' . $deposit_dis->deposit_amount . '</div>';
             }
             $data['deposit_sum'] .= '<span>' . $dep_currency . ' ' . $dep_sum . '</span>';
+        }
+        /* End here */
+
+        /* code for property amount and property account */
+        $property_display = $this->account_model->property_details($user_id);
+        $property_sum = 0;
+        $data['property_sum'] = '';
+        $data['property_list'] = '';
+        $property_currency = '';
+        if (!empty($property_display)) {
+            foreach ($property_display as $property_dis) {
+                $property_sum += $property_dis->property_amount;
+                $property_currency = $property_dis->currency_type;
+
+                $data['property_list'] .= '<div class="sc">' . $property_dis->property_name . ' ' . $property_dis->currency_type . ' ' . $property_dis->property_amount . '</div>';
+            }
+            $data['property_sum'] .= '<span>' . $property_currency . ' ' . $property_sum . '</span>';
         }
         /* End here */
 
@@ -300,7 +319,7 @@ class Account extends CI_Controller {
         $data['add_property_view'] = $this->load->view('account/add_property', $data, TRUE);
         $data['add_loan_view'] = $this->load->view('account/add_loan', $data, TRUE);
         $data['add_dashboard_script_view'] = $this->load->view('common/dashboard_script', $data, TRUE);
-        
+
         $account_transaction_detail = array();
         $data['account_bal'] = '';
         $data['transaction_rows'] = '';
@@ -338,7 +357,7 @@ class Account extends CI_Controller {
         $user_id = $logged_in['user_id'];
         $account_type = $this->input->post('account_type');
         if ($account_type != '') {
-            $institution_name_list = $this->account_model->get_institution_list_for_add_transaction($account_type , $user_id);
+            $institution_name_list = $this->account_model->get_institution_list_for_add_transaction($account_type, $user_id);
             echo form_dropdown('trans_account', $institution_name_list, '', 'class="form-control" id="trans_account"');
         }
     }
@@ -478,8 +497,8 @@ class Account extends CI_Controller {
                         'sold_property_cap_rate' => $row['Cap Rate'],
                         'sold_property_price_sf' => $row['Price/SF'],
                         'sold_property_price_sf_land' => $row['Price/SF Land'],
-                    ); //$val->Retail;
-                    //$row_data[$key] = str_replace('"', '', $val);
+                    ); //$data->Retail;
+                    //$row_data[$key] = str_replace('"', '', $data);
                 }
                 $insert_return = $this->admin_common_model->insert_sold_property($insert_rows);
 
