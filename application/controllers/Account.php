@@ -111,7 +111,7 @@ class Account extends CI_Controller {
             $val['property_sum'] .= '<span>' . $property_currency . ' ' . $property_sum . '</span>';
         }
         /* End here */
-
+        $val['left_accordian_view'] = $this->load->view('common/left_accordian', $val, TRUE);
         $val['add_transaction_view'] = $this->load->view('account/add_transaction', $val, TRUE);
         $val['add_deposit_view'] = $this->load->view('account/add_deposit', $val, TRUE);
         $val['add_property_view'] = $this->load->view('account/add_property', $val, TRUE);

@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="row">   
-        <?php $this->load->view('common/left_accordian'); ?>
+        <?php echo $left_accordian_view; ?>
         <div class="col-md-9">
             <div><strong><?php echo $account_name; ?></strong></div>
             <div>TOTAL AMOUNT : <?php echo $account_bal; ?></div>

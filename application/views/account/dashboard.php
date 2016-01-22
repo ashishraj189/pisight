@@ -21,7 +21,7 @@
     </div>
     <div class="row">   
         <?php
-        $this->load->view('common/left_accordian');
+        echo $left_accordian_view;
         ?>
         <div class="col-md-9">
             <h1>TREND</h1>
